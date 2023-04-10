@@ -1,0 +1,32 @@
+#auth
+{
+    position: fixed;
+    top: 20%;
+    left: 35vmax;
+    right: 35vmax;
+   
+}
+#form-auth > form
+{
+    margin-top: 10pt;
+}
+
+#btn-group
+{
+    margin-top: 15pt;
+    
+}
+
+.form-group
+{
+    margin-top: 3pt;
+}
+
+#chat
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+}
