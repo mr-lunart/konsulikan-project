@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Chat;
+use App\Http\Controllers\IoChat;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Login::class, 'login']);
 Route::post('/chat', [Chat::class, 'chat']);
-Route::get('/poll-data', function() {
-    // $lastSeenId = request()->input('lastSeenId');
-    // $data = DB::table('data')->where('id', '>', $lastSeenId)->get();
-    // return response()->json($data);
-});
+Route::post('/sent', [IoChat::class, 'io']);
+Route::get('/sent', [IoChat::class, 'io']);
