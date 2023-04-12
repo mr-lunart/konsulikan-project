@@ -10,6 +10,7 @@
 <div id="auth" class="card p-4">
     <span class="text-center">
         <h2>Autentikasi</h2>
+        <?php  ?>
     </span>
     <hr>
     <div id="form-auth" >

@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Login::class, 'login']);
 Route::post('/chat', [Chat::class, 'chat']);
-Route::post('/sent', [IoChat::class, 'io']);
-Route::get('/sent', [IoChat::class, 'io']);
+Route::post('/push', [IoChat::class, 'push']);
+Route::get('/poll', [IoChat::class, 'poll']);

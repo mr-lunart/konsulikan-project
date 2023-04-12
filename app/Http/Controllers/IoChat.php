@@ -2,17 +2,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Io;
+use App\Models\Chat;
 
 class IoChat extends Controller
 {
-    public function io()
+    public function push()
     {
-
         $data = $_POST;
+        $data_string = "'1','1','1', ' ".$data['pesan'] ." ', CURRENT_TIMESTAMP";
+        $send = Chat::DB_SEND($data_string);
         // return response()->json(['success'=>$data]);
-        return response($data["pesan"]);
-        
+        return response($send);   
+    }
+
+    public function poll()
+    {
+        $data = Chat::DB_POLL();
+        return response($data);
     }
 }
 ?>
