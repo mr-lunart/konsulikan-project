@@ -7,32 +7,45 @@
     <title>Login</title>
 </head>
 <body>
-<div id="auth" class="card p-4">
-    <span class="text-center">
-        <h2>Autentikasi</h2>
-        <?php  ?>
-    </span>
-    <hr>
-    <div id="form-auth" >
-        <form method="post" action="chat" >
-            @csrf
-            <div class="form-group">
-                <label class="form-text" for="">User</label>
-                <input class="form-control" type="text" name="user">
-            </div>
+    <div class="d-flex justify-content-center">
+        <div id="auth" class="card ">
+            <br>
+            <span class="text-center">
+                <strong>Halaman Login Client</strong>
+                <hr>
+            </span>
+            <div class="m-4 d-flex justify-content-center">
+                <div class="align-self-stretch" id="form-auth" >
+                    
+                    <form method="post" action="chat" >
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-text" for="">User</label>
+                            <input class="form-control" type="text" name="user">
+                        </div>
 
-            <div class="form-group">
-                <label class="form-text" for="">Pass</label>
-                <input class="form-control" type="password" name="pass">
+                        <div class="form-group">
+                            <label class="form-text" for="">Pass</label>
+                            <input class="form-control" type="password" name="pass">
+                        </div>
+                        <br>
+                        <div id="d-flex justify-content-center">
+                            <button class="btn btn-primary col-12" type="submit">login</button>
+                        </div>
+                    </form>
+                    
+                    <br>
+                    <a class="text-center" href="konsultan"> 
+                        <small> 
+                            <p> Anda Konsultan? Login Disini </p> 
+                        </small>  
+                    </a>
+
+                </div>
             </div>
-            
-            <div id="btn-group">
-                <button class="btn btn-primary col-12" type="submit">Login</button>
-            </div>
-        
-        </form>
+        </div>
     </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>    
 </body>
 </html>

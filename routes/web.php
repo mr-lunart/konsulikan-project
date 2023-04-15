@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [Login::class, 'login']);
+Route::get('/konsultan',[Login::class, 'konsultan']);
 Route::post('/chat', [Chat::class, 'chat']);
 Route::post('/push', [IoChat::class, 'push']);
 Route::get('/poll', [IoChat::class, 'poll']);
