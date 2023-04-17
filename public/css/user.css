@@ -17,3 +17,11 @@ body
     right: 0;
     
 }
+.login
+{
+    position: absolute;
+    margin-left: -200px;
+  /* -1/2 width */
+    top: 25%;
+    left: 50%;
+}

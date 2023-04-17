@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="d-flex justify-content-center">
+    <div class="login d-flex justify-content-center">
         <div id="auth" class="card ">
             <br>
             <span class="text-center">
@@ -17,7 +17,7 @@
             <div class="m-4 d-flex justify-content-center">
                 <div class="align-self-stretch" id="form-auth" >
                     
-                    <form method="post" action="chat" >
+                    <form method="post" action="login" >
                         @csrf
                         <div class="form-group">
                             <label class="form-text" for="">User</label>

@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Login::class, 'login']);
+Route::get('/', [Login::class, 'client']);
+Route::get('/home', function () {
+    return redirect('/');
+});
 Route::get('/konsultan',[Login::class, 'konsultan']);
-Route::post('/chat', [Chat::class, 'chat']);
+Route::post('/login', [Login::class, 'login']);
 Route::post('/push', [IoChat::class, 'push']);
 Route::get('/poll', [IoChat::class, 'poll']);
