@@ -33,7 +33,7 @@ class Akun extends Controller
 
     public function profil()
     {
-        
+        return view('page.profil');   
     }
 }
 ?>
