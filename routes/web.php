@@ -24,6 +24,8 @@ Route::get('/home', function () {
 });
 Route::get('/konsultan',[Login::class, 'konsultan']);
 Route::post('/login', [Login::class, 'login']);
+Route::get('/login', [Login::class, 'sessionLogin']);
+Route::get('login/profil', [Akun::class, 'profil']);
 Route::get('/daftar', [Akun::class, 'daftar']);
 Route::post('/daftar', [Akun::class, 'signup']);
 Route::post('/push', [IoChat::class, 'push']);

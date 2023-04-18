@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 class Autentikasi extends DB_HANDLER

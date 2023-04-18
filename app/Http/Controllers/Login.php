@@ -33,5 +33,14 @@ class Login extends Controller
             return view('page.login');
         }        
     }
+    public static function sessionLogin()
+    {
+        session_start();
+        if(isset($_SESSION['data']))
+        {
+            return view( 'page.homepage');
+        }
+
+    }
 }
 ?>

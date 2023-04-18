@@ -1,6 +1,9 @@
 <?php
-session_start();
-$_SESSION['data'] = $data[0]
+
+if (isset($_SESSION['data'])==false)
+{
+    $_SESSION['data'] = $data[0];
+}
 
 ?>
 <!DOCTYPE html>
@@ -14,10 +17,10 @@ $_SESSION['data'] = $data[0]
 <body>
     <div class="container">
         <br>
-        <h3>Selamat Datang <?php print($data[0]->nama) ?> </h3>
+        <h3>Selamat Datang <?php print($_SESSION['data']->nama) ?> </h3>
         <a href="profil"><button class="btn btn-primary"> Profil </button></a>
         <a href="profil"><button class="btn btn-warning"> Lihat List Konsultan </button></a>
-        <a href="profil"><button class="btn btn-danger"> ogout </button></a>
+        <a href="profil"><button class="btn btn-danger"> Logout </button></a>
     </div>
     
 </body>

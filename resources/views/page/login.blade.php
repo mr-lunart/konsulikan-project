@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,14 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="login d-flex justify-content-center">
+    <div class=" login d-flex justify-content-center">
         <div id="auth" class="card ">
             <br>
             <span class="text-center">
                 <strong>Halaman Login Client</strong>
                 <hr>
             </span>
-            <div class="d-flex justify-content-center">
+            <div class="m-3 d-flex justify-content-center">
                 <div class="align-self-stretch" id="form-auth" >
                     <form method="post" action="login" >
                         @csrf
