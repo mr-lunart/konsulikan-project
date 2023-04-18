@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Autentikasi;
 
-class Login
+class Login extends Controller
 {
 
     public function client()
@@ -25,6 +25,7 @@ class Login
 
         if ($user == $data[0]->user && $pass == $data[0]->pass)
         {
+
         return view( 'page.homepage', ['data' => $data]);
         }
         else

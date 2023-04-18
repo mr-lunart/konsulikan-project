@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\returnSelf;
 
-class Chat
+class Chat extends DB_HANDLER
 {
     protected $fill = [
 

@@ -18,7 +18,7 @@
                 <div class="m-4 d-flex justify-content-center">
                     <div class="align-self-stretch" id="form-auth" >
                         
-                        <form method="post" action="login" >
+                        <form method="" action="" >
                             @csrf
                             <div class="form-group">
                                 <label class="form-text" for="">User</label>
