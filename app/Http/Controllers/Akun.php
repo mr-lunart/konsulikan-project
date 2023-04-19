@@ -35,5 +35,27 @@ class Akun extends Controller
     {
         return view('page.profil');   
     }
+    
+    public function update()
+    {
+        return view('page.profil-update');
+    }
+    public function profilUpdate()
+    {
+        $akun = new AkunHandler();
+        $data = $_POST;
+        $kolom = "`nama`= " . "'".$data['nama']."'";
+        $where = "user = 'Hamid'";
+        try{
+
+            $query = $akun->DB_UPDATE('client',$kolom,$where);
+            $hasil = true;
+
+        } catch(QueryException $e) {
+            $query = $e -> getMessage();
+            $hasil = false;
+        }
+        return view('page.profil-update', ['query' => $query, 'hasil' => $hasil]);
+    }
 }
 ?>

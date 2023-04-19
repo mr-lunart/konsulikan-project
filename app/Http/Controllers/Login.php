@@ -16,6 +16,13 @@ class Login extends Controller
         return view('page.login-konsultan');
     }
 
+    public static function logout()
+    {
+        session_start();
+        session_destroy();
+        return redirect('/home');
+    }
+
     public static function login()
     {
         $user = $_POST['user'];
@@ -25,8 +32,8 @@ class Login extends Controller
 
         if ($user == $data[0]->user && $pass == $data[0]->pass)
         {
-
-        return view( 'page.homepage', ['data' => $data]);
+            
+            return view('page.homepage',['data' => $data]);
         }
         else
         {
@@ -36,9 +43,10 @@ class Login extends Controller
     public static function sessionLogin()
     {
         session_start();
+
         if(isset($_SESSION['data']))
         {
-            return view( 'page.homepage');
+            return view('page.homepage');
         }
 
     }

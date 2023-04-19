@@ -18,9 +18,9 @@ class DB_HANDLER
         $query = DB::insert("insert into `". $tabel ."`(". $kolom.") VALUES (". $data .")");
     }
     
-    public static function DB_UPDATE()
-    {
-        $query = DB::update('');
+    public static function DB_UPDATE($tabel, $kolom, $where)
+    { 
+        $query = DB::update("update ". $tabel ." SET ". $kolom ." WHERE ". $where);
     }
 }
 
