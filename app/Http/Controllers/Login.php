@@ -19,6 +19,7 @@ class Login extends Controller
     public static function logout()
     {
         session_start();
+        session_abort();
         session_destroy();
         return redirect('/home');
     }
@@ -31,8 +32,8 @@ class Login extends Controller
         $data = $autentikasi->autentikasiClient($user);
 
         if ($user == $data[0]->user && $pass == $data[0]->pass)
-        {
-            
+        {   session_start();
+            $_SESSION['data'] = $data[0];
             return view('page.homepage',['data' => $data]);
         }
         else
@@ -42,11 +43,10 @@ class Login extends Controller
     }
     public static function sessionLogin()
     {
-        session_start();
 
         if(isset($_SESSION['data']))
         {
-            return view('page.homepage');
+            return redirect('/home');
         }
 
     }

@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if ( isset($data) == true )
-{
-    $_SESSION['data'] = $data[0];
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +6,13 @@ if ( isset($data) == true )
     <link href="{{ asset('css/user.css') }}" rel="stylesheet">
     <title>Login</title>
 </head>
+
 <body>
     <div class="container">
         <br>
-        <h3>Selamat Datang <?php print($_SESSION['data'] -> nama) ?> 
-        </h3>
+        <h3>Selamat Datang <?php echo($_SESSION['data'] -> nama) ?> </h3>
         <a href="dashboard/profil"><button class="btn btn-primary"> Profil </button></a>
-        <a href="dashboard/profil"><button class="btn btn-warning"> Lihat List Konsultan </button></a>
+        <a href="dashboard/konsultan"><button class="btn btn-warning"> Lihat List Konsultan </button></a>
         <a href="dashboard/logout"><button class="btn btn-danger"> Logout </button></a>
     </div>
     

@@ -4,6 +4,7 @@ use App\Http\Controllers\Akun;
 use App\Http\Controllers\Chat;
 use App\Http\Controllers\IoChat;
 use App\Http\Controllers\Login;
+use App\Http\Controllers\HalamanKonsultan;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,14 +26,21 @@ Route::get('/home', function () {
 Route::get('konsultan',[Login::class, 'konsultan']);
 
 Route::post('dashboard', [Login::class, 'login']);
-Route::get('dashboard', [Login::class, 'sessionLogin']);
+// Route::get('dashboard', [Login::class, 'sessionLogin']);
 
 Route::get('dashboard/profil', [Akun::class, 'profil']);
+
 Route::get('dashboard/profil/update', [Akun::class, 'update']);
 Route::post('dashboard/profil/update', [Akun::class, 'profilUpdate']);
+
+Route::get('dashboard/konsultan', [HalamanKonsultan::class, 'listKonsul']);
+
 Route::get('dashboard/logout', [Login::class, 'logout']);
+
 Route::get('daftar', [Akun::class, 'daftar']);
 Route::post('daftar', [Akun::class, 'signup']);
+
 Route::post('push', [IoChat::class, 'push']);
+
 Route::get('poll', [IoChat::class, 'poll']);
 

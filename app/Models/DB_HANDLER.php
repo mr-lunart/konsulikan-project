@@ -13,14 +13,27 @@ class DB_HANDLER
         return($query);
     }
     
+    public static function DB_READ_ALL($tabel)
+    {
+        $query = DB::select('select * from `'. $tabel .'`' );
+        return($query);
+    }
+
     public static function DB_CREATE($tabel, $data, $kolom)
     {
         $query = DB::insert("insert into `". $tabel ."`(". $kolom.") VALUES (". $data .")");
+        return($query);
     }
     
     public static function DB_UPDATE($tabel, $kolom, $where)
     { 
         $query = DB::update("update ". $tabel ." SET ". $kolom ." WHERE ". $where);
+        return($query);
+    }
+    
+    public static function DB_DELETE()
+    {
+
     }
 }
 
