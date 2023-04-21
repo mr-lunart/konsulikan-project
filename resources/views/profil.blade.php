@@ -1,5 +1,5 @@
 <?php
-session_start();
+$query = session('query')
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +16,17 @@ session_start();
         <div class="card ">
             <div class="dflex m-3">
                 <div>
-                    <p><strong>Nama : </strong> <?php echo($_SESSION['data']->nama)?></p>
+                    <p><strong>Nama : </strong> <?php echo($query[0] -> nama)?></p>
                 </div>
                 <div>
-                    <p><strong>Username : </strong> <?php echo($_SESSION['data']->user)?> </p>
+                    <p><strong>Username : </strong> <?php echo($query[0] -> user)?> </p>
                 </div>
                 <div>
-                    <a href="profil/update"><button class="btn btn-primary">Ubah Profil</button></a>
+                    <a href="<?= route('profil.update')?>"><button class="btn btn-primary">Ubah Profil</button></a>
+                    <button onclick=" window.location.replace('<?=route('home')?>') " class="btn btn-success">Kembali Ke Home</button>
                 </div>
             </div>
         </div>
     </div>
-    
-    
 </body>
 </html>

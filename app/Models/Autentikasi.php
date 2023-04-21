@@ -11,10 +11,11 @@ class Autentikasi extends DB_HANDLER
         "dataConsultant" => ' `uid`, `nama`, `user`, `pass` '
     ];
 
-    public function autentikasiClient($where){
+    public function getAkunKlien($where){
+        
         $data = $this -> database;
-        $customer = Autentikasi::DB_READ($data['tabelUser'],$data['dataUser'],$where);
-        return $customer;
+        $query = $this->DB_READ($data['tabelUser'],$data['dataUser'],$where);
+        return $query;
     }
 
 }

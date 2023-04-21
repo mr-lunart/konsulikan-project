@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\AkunHandler;
 use Illuminate\Database\QueryException;
 
-class Akun extends Controller
+class Profil extends Controller
 {
-    public function daftar()
-    {
+    public function daftar(){
         return view('page.daftar');
     }
-    public function signup()
-    {
+    public function signup(){
         $no = 0;
         $nama = $_POST['nama'];
         $user = $_POST['user'];
@@ -30,18 +28,10 @@ class Akun extends Controller
 
         return view('page.daftar', ['query' => $query, 'hasil' => $hasil]);
     }
-
-    public function profil()
-    {
-        return view('page.profil');   
+    public function update(){
+        return view('profil-update');
     }
-    
-    public function update()
-    {
-        return view('page.profil-update');
-    }
-    public function profilUpdate()
-    {
+    public function profilUpdate(){
         $akun = new AkunHandler();
         $data = $_POST;
         $kolom = "`nama`= " . "'".$data['nama']."'";
@@ -55,7 +45,7 @@ class Akun extends Controller
             $query = $e -> getMessage();
             $hasil = false;
         }
-        return view('page.profil-update', ['query' => $query, 'hasil' => $hasil]);
+        return view('profil-update', ['data' => $data, 'hasil' => $hasil]);
     }
 }
 ?>

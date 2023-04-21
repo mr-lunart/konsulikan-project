@@ -36,7 +36,7 @@
                         </form>
                         
                         <br>
-                        <a class="text-center" href="home"> 
+                        <a class="text-center" href="<?php echo(url('/'))?>"> 
                             <small> 
                                 <p> Kembali Ke Login Client</p> 
                             </small>  

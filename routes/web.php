@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\Akun;
 use App\Http\Controllers\Chat;
+use App\Http\Controllers\Front;
 use App\Http\Controllers\IoChat;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\HalamanKonsultan;
+use App\Http\Controllers\Homepage;
+use App\Http\Controllers\Profil;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,26 +22,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Login::class, 'client']);
-Route::get('/home', function () {
-    return redirect('/');
+Route::get('/login', [Front::class,'client']);
+Route::get('/', function(){
+    return redirect('/login');
 });
-Route::get('konsultan',[Login::class, 'konsultan']);
+Route::get('/login/{status}', [Front::class,'status']) -> name('login.statue');
+Route::post('/login', [Login::class,'login']) -> name('login.auth');
+// Route::match(['get', 'post'],'konsultan',[Front::class, 'konsultan']);
+Route::get('/homepage', [Homepage::class, 'home']) -> name('home');
 
-Route::post('dashboard', [Login::class, 'login']);
-// Route::get('dashboard', [Login::class, 'sessionLogin']);
-
-Route::get('dashboard/profil', [Akun::class, 'profil']);
-
-Route::get('dashboard/profil/update', [Akun::class, 'update']);
-Route::post('dashboard/profil/update', [Akun::class, 'profilUpdate']);
+Route::get('homepage/profil', [Homepage::class, 'profil']) -> name('home.profil');
+Route::get('homepage/profil/update', [Profil::class, 'update']) -> name('profil.update');
+Route::post('homepage/profil/update', [Profil::class, 'profilUpdate']) -> name('profil.save');
 
 Route::get('dashboard/konsultan', [HalamanKonsultan::class, 'listKonsul']);
 
-Route::get('dashboard/logout', [Login::class, 'logout']);
+Route::get('homepage/logout', [Login::class, 'logout']) -> name('home.logout');
 
-Route::get('daftar', [Akun::class, 'daftar']);
-Route::post('daftar', [Akun::class, 'signup']);
+Route::get('daftar', [Profil::class, 'daftar']);
+Route::post('daftar', [Profil::class, 'signup']);
 
 Route::post('push', [IoChat::class, 'push']);
 

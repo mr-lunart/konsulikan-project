@@ -2,26 +2,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Autentikasi;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Session;
 
 class Login extends Controller
 {
 
-    public function client()
-    {
-        return view('page.login');
-    }
-
-    public function konsultan()
-    {
-        return view('page.login-konsultan');
-    }
-
     public static function logout()
     {
-        session_start();
-        session_abort();
-        session_destroy();
-        return redirect('/home');
+        Session::flush();
+        return redirect('/homepage');
     }
 
     public static function login()
@@ -29,26 +19,35 @@ class Login extends Controller
         $user = $_POST['user'];
         $pass = $_POST['pass'];
         $autentikasi = new Autentikasi();
-        $data = $autentikasi->autentikasiClient($user);
+        try{
+            $query = $autentikasi->getAkunKlien( $user );
+            if( count( $query )==0 ) {
+                $hasil = 0;
+            }
+            else {
+                $hasil = 1;
+            }
 
-        if ($user == $data[0]->user && $pass == $data[0]->pass)
-        {   session_start();
-            $_SESSION['data'] = $data[0];
-            return view('page.homepage',['data' => $data]);
+        } catch( QueryException $e ){
+            $query = $e;
+            $hasil = 0;
         }
-        else
+
+        if ( $hasil==1 ) {    
+            if ($user == $query[0]->user && $pass == $query[0]->pass)
+            {   
+                Session::put('query', $query);
+                return redirect()->route('home');
+                // return view('homepage', ['query'=>$query]);
+            }
+        }
+
+        elseif( $hasil == 0 )
         {
-            return view('page.login');
+            $status = 0;
+            return redirect()->route('login.statue', ['status' => $status]);
         }        
     }
-    public static function sessionLogin()
-    {
 
-        if(isset($_SESSION['data']))
-        {
-            return redirect('/home');
-        }
-
-    }
 }
 ?>
