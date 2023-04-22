@@ -7,19 +7,17 @@
     <title>Konsultan</title>
 </head>
 <body>
-    @foreach ($data as $user)
         <div class=" container">
             <div class="card m-3 p-3">
                 <div>
-                    <strong> {{ $user->nama }} </strong>
+                    <p>NULL</p>
+                    <strong> {{ var_dump($query) }} </strong>
                     <br>
-                    <small> {{ $user->bidang }} </small>
                 </div>
                 <div> 
                     <button class="btn btn-primary">Mulai Chat</button>
                 </div>
             </div>
         </div>
-    @endforeach
 </body>
 </html>

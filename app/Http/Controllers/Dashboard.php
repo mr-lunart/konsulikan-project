@@ -24,6 +24,9 @@ class Dashboard extends Controller
 
     public function clientList()
     {
-        return view('clientList');
+        $db = new SessionDB();
+        $session = session('query')[0];
+        $query = $db -> getSession($session -> uid);
+        return view('clientlist',['query'=>$query]);
     }
 }
