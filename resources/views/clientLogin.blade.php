@@ -33,7 +33,7 @@
                         </div>
                     </form>
                     <br>
-                    <a class="text-center" href="konsultan"> 
+                    <a class="text-center" href="<?= route('dashboard')?>"> 
                         <small> 
                             <p> Anda Konsultan? Login Disini </p> 
                         </small>  
@@ -50,11 +50,16 @@
 <?php
     if(isset($status))
     {
-        echo("
-        <script>
+        if($status == 1) {
+
+            $status = null;
+            echo("
+            <script>
             alert(' Username atau Password Anda Salah! ')
             window.location.replace('".url('/login')."')
-        </script>");
+            </script>");
+        }
+        
     } 
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>    

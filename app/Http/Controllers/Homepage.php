@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Session;
 
 class Homepage extends Controller
 {
-    public function home()
-    {   
+    public function home() {   
         $query = session('query');
         
         if( isset($query) ){
@@ -20,8 +19,7 @@ class Homepage extends Controller
         }
         
     }
-    public function profil()
-    {
+    public function profil() {
         $query = session('query');
        
         if( isset($query) ){

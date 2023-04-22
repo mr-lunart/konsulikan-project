@@ -18,6 +18,13 @@ class Autentikasi extends DB_HANDLER
         return $query;
     }
 
+    public function getAkunKonsultan($where){
+        
+        $data = $this -> database;
+        $query = $this->DB_READ($data['tabelConsultant'],$data['dataConsultant'],$where);
+        return $query;
+    }
+
 }
 
 ?>

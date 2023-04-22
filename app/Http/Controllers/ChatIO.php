@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 
-class IoChat extends Controller
+class ChatIO extends Controller
 {
     public function push()
     {
