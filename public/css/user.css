@@ -9,7 +9,7 @@ body
    
 }
 
-#chat
+.input-group
 {
     position: fixed;
     bottom: 0;

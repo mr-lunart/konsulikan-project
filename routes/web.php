@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Chat;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Dashboard;
@@ -36,6 +38,7 @@ Route::get('homepage/logout', [Login::class, 'logout']) -> name('home.logout');
 
 Route::get('dashboard/home',[Dashboard::class, 'home']) -> name('dashboard.home');
 Route::get('dashboard/client',[Dashboard::class, 'clientList']) -> name('dashboard.client');
+Route::get('dashboard/client/chat',[Chat::class, 'chat']) -> name('dashboard.chat');
 Route::get('dashboard/logout',[Login::class, 'dashboardLogout']) -> name('dashboard.logout');
 
 Route::get('homepage/profil', [Homepage::class, 'profil']) -> name('home.profil');
@@ -50,7 +53,6 @@ Route::get('homepage/konsultan', [HalamanKonsultan::class, 'listKonsul']);
 Route::get('daftar', [Profil::class, 'daftar']);
 Route::post('daftar', [Profil::class, 'signup']);
 
-Route::post('push', [ChatIO::class, 'push']);
-
-Route::get('poll', [ChatIO::class, 'poll']);
+Route::post('dashboard/client/push', [ChatIO::class, 'push']);
+Route::get('dashboard/client/poll', [ChatIO::class, 'poll']);
 

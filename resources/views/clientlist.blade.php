@@ -7,15 +7,19 @@
     <title>Konsultan</title>
 </head>
 <body>
+    
         <div class=" container">
+            <div class="m-3">
+                <a href="{{ route('dashboard.home') }}"> <button class="btn btn-primary ">Kembali</button> </a>
+            </div>
             <div class="card m-3 p-3">
                 <div>
-                    <p>NULL</p>
-                    <strong> {{ var_dump($query) }} </strong>
-                    <br>
+                    <p>Chat Session <strong>{{ $query[0]->session_id }}</strong> </p>
                 </div>
                 <div> 
-                    <button class="btn btn-primary">Mulai Chat</button>
+                    <a href="<?= route('dashboard.chat') ?>">
+                        <button  class="btn btn-primary">Mulai Chat</button>
+                    </a>
                 </div>
             </div>
         </div>
