@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Chat;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Chat;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Front;
 use App\Http\Controllers\ChatIO;
 use App\Http\Controllers\Login;
-use App\Http\Controllers\HalamanKonsultan;
 use App\Http\Controllers\Homepage;
+use App\Http\Controllers\Konsultasi;
 use App\Http\Controllers\Profil;
 
 
@@ -24,7 +24,7 @@ use App\Http\Controllers\Profil;
 |
 */
 
-Route::get('/login', [Front::class,'client']);
+Route::get('/login', [Front::class,'client']) -> name('login');
 Route::get('/', function(){ return redirect('/login'); });
 Route::post('/login', [Login::class,'login']) -> name('login.auth');
 Route::get('/login/{status}', [Front::class,'status']) -> name('login.statue');
@@ -46,7 +46,7 @@ Route::get('homepage/profil/update', [Profil::class, 'update']) -> name('profil.
 Route::post('homepage/profil/update', [Profil::class, 'profilUpdate']) -> name('profil.save');
 
 
-Route::get('homepage/konsultan', [HalamanKonsultan::class, 'listKonsul']);
+Route::get('homepage/konsultan', [Konsultasi::class, 'listKonsul']);
 
 
 

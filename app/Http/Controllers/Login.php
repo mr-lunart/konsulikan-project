@@ -10,9 +10,12 @@ class Login extends Controller
 
     public function logout() {
         Session::flush();
-        return redirect('/homepage');
+        header("Location:".route('login'));
+        exit();
+        // return redirect('/homepage');
     }
     public function login() {
+        
         $user = $_POST['user'];
         $pass = $_POST['pass'];
         $autentikasi = new Autentikasi();
@@ -33,11 +36,12 @@ class Login extends Controller
         if ( $hasil==1 ) {   
 
             if ($user == $query[0]->user && $pass == $query[0]->pass)
-            {   
+            { 
                 Session::put('query', $query);
                 return redirect()->route('home');
             }
             else {
+                
                 $status = 1;
                 return redirect()->route('login.statue', ['status' => $status]);
             }
@@ -45,6 +49,7 @@ class Login extends Controller
 
         elseif( $hasil == 0 )
         {
+            
             $status = 1;
             return redirect()->route('login.statue', ['status' => $status]);
         }        
