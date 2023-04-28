@@ -15,7 +15,7 @@ $query = session('query');
         <br>
         <h3>Selamat Datang <?php echo( $query[0] -> nama ) ?> </h3>
         <a href="homepage/profil"><button class="btn btn-primary"> Profil </button></a>
-        <a href="homepage/konsultan"><button class="btn btn-warning"> Lihat List Konsultan </button></a>
+        <a href="homepage/konsultan"><button class="btn btn-warning"> Konsultasi </button></a>
         <button onclick="window.location.replace('<?= route('home.logout') ?>')" class="btn btn-danger"> Logout </button>
     </div>
 </body>

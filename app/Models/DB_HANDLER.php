@@ -27,7 +27,7 @@ class DB_HANDLER
 
     public static function DB_CREATE($tabel, $data, $kolom)
     {
-        $query = DB::insert("insert into `". $tabel ."`(". $kolom.") VALUES (". $data .")");
+        $query = DB::insert("insert into `". $tabel ."`(".$kolom.") VALUES (". $data .")");
         return($query);
     }
     

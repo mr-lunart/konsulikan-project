@@ -26,6 +26,11 @@ class Profil extends Controller
             $hasil = false;
         }
 
+        if($hasil==true)
+        {
+            $akun->updateUID($user);
+        }
+
         return view('page.daftar', ['query' => $query, 'hasil' => $hasil]);
     }
     public function update(){

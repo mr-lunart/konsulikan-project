@@ -46,7 +46,10 @@ Route::get('homepage/profil/update', [Profil::class, 'update']) -> name('profil.
 Route::post('homepage/profil/update', [Profil::class, 'profilUpdate']) -> name('profil.save');
 
 
-Route::get('homepage/konsultan', [Konsultasi::class, 'listKonsul']);
+Route::get('homepage/konsultan', [Konsultasi::class, 'listKonsul']) -> name('home.konsultan');
+Route::post('homepage/konsultan/pemesanan', [Konsultasi::class, 'setkonsultan']) -> name('home.pesanan');
+Route::post('homepage/konsultan/token', [Konsultasi::class, 'getToken']) -> name('home.token');
+Route::any('homepage/konsultan/payment/full', [Konsultasi::class, 'midtransPay']) -> name('home.payment');
 
 
 

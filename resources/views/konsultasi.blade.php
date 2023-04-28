@@ -7,20 +7,39 @@
     <title>Konsultan</title>
 </head>
 <body>
-    @foreach ($data as $user)
-        <div class=" container">
-            <div class="card m-3 p-3">
-                <div>
-                    <strong> {{ $user->nama }} </strong>
-                    <br>
-                    <small> {{ $user->bidang }} </small>
-                </div>
-                <div> 
-                    <button class="btn btn-primary">Mulai Chat</button>
-                </div>
+    <div class="container">
+        <div class="border rounded m-3">
+            <div class="m-3">
+                <button class="btn btn-primary" >Sesi Konsultasi</button>
+                <button class="btn btn-warning" >Riwayat Konsultasi</button>
+                <button class="btn btn-success" >Pemesanan</button>
+                <a href="<?=route('home')?>"><button class="btn btn-dark" >Homepage</button></a>
             </div>
         </div>
-    @endforeach
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SET_YOUR_CLIENT_KEY_HERE"></script>
+        <div class="m-3">
+            <h4><strong> Konsultan</strong> </h4>
+        </div>
+
+        <div class=" m-3">
+        @foreach ($data as $user)
+            <div class="border rounded mb-3">
+                <div class="m-3">
+                    <strong> {{ $user->nama }} </strong>
+                    <p><strong>Tarif : </strong>Rp.{{ $user->tarif }}</p>
+                    <form method="post" action="<?= route('home.pesanan') ?>">
+                        @csrf
+                        <input type="hidden" value="<?= $user->uid ?>" name="uid">
+                        <button class="btn btn-primary">Buat Sesi</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+        </div>
+    </div>
+    
+
+    <!-- <button id="pay-button">Pay!</button>
+    <input type="text" id="snap-token"> -->
+    
 </body>
 </html>

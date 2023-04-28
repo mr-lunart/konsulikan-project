@@ -21,15 +21,15 @@
                         @csrf
                         <div class="form-group">
                             <label class="form-text" for="">Nama</label>
-                            <input class="form-control" type="text" name="nama">
+                            <input class="form-control" type="text" name="nama" required>
                         </div>
                         <div class="form-group">
                             <label class="form-text" for="">Username</label>
-                            <input class="form-control" type="text" name="user">
+                            <input class="form-control" type="text" name="user" required>
                         </div>
                         <div class="form-group">
                             <label class="form-text" for="">Password</label>
-                            <input class="form-control" type="password" name="pass">
+                            <input class="form-control" type="password" name="pass" required>
                         </div>
                         <br>
                         <div id="d-flex justify-content-center">
