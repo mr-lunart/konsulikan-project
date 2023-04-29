@@ -5,7 +5,8 @@ class Chat extends Controller
 {
     public function chat()
     {
-        return view('chat');
+        $id = $_GET['session_id'];
+        return view('chat',['id_sesi'=>$id]);
     }
 }
 ?>

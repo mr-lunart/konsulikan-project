@@ -19,7 +19,7 @@ class Konsultan extends DB_HANDLER {
         $tabel = $this->config['tabel'];
         $select = $this->config['kolom2'];
         $uid = 'uid = "'.$uid.'"';
-        $query = $this->DB_READ_test($tabel,$select,$uid);
+        $query = $this->DB_READ_WHERE($tabel,$select,$uid);
         return $query;
     }
 

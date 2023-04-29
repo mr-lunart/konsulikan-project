@@ -17,7 +17,7 @@
                     <p>Chat Session <strong>{{ $query[0]->session_id }}</strong> </p>
                 </div>
                 <div> 
-                    <a href="<?= route('dashboard.chat') ?>">
+                    <a href="<?= route('dashboard.chat').'?session_id='.$query[0]->session_id ?>">
                         <button  class="btn btn-primary">Mulai Chat</button>
                     </a>
                 </div>

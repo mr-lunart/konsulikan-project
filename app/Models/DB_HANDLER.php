@@ -13,7 +13,7 @@ class DB_HANDLER
         return($query);
     }
     
-    public static function DB_READ_test($tabel, $select, $where)
+    public static function DB_READ_WHERE($tabel, $select, $where)
     {
         $query = DB::select('select '. $select .' from '. $tabel .' where '. $where );
         return($query);

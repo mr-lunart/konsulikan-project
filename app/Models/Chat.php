@@ -11,13 +11,13 @@ class Chat extends DB_HANDLER
     
     public static function DB_SEND($data)
     {
-        $pesan = DB::insert(" INSERT INTO `chat` VALUES ( " .$data. ") ");
+        $pesan = DB::insert(" INSERT INTO `chat` VALUES (".$data.") ");
         return $pesan;
     }
 
-    public static function DB_POLL()
+    public static function DB_POLL($id)
     {
-        $data = DB::select(" SELECT * FROM `chat` ");
+        $data = DB::select(" SELECT * FROM `chat` WHERE `session_id`='$id'");
         return $data;
     }
 }

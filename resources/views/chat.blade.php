@@ -17,6 +17,7 @@
 <div class="container">
     <div class="input-group">
             <input id="pesan" class="form-control rounded-0" placeholder="..." name="pesan">
+            <input id="idSession" type="hidden" value="<?=$id_sesi?>" name="idSession">
             <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> => </button>
     </div>
 </div>

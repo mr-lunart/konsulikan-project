@@ -10,8 +10,7 @@ use App\Http\Controllers\Login;
 use App\Http\Controllers\Homepage;
 use App\Http\Controllers\Konsultasi;
 use App\Http\Controllers\Profil;
-
-
+use App\Http\Controllers\Sesi;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +49,7 @@ Route::get('homepage/konsultan', [Konsultasi::class, 'listKonsul']) -> name('hom
 Route::post('homepage/konsultan/pemesanan', [Konsultasi::class, 'setkonsultan']) -> name('home.pesanan');
 Route::post('homepage/konsultan/token', [Konsultasi::class, 'getToken']) -> name('home.token');
 Route::any('homepage/konsultan/payment/full', [Konsultasi::class, 'midtransPay']) -> name('home.payment');
+Route::get('homepage/konsultan/sesi', [Sesi::class, 'setSesi']) -> name('home.sesi');
 
 
 

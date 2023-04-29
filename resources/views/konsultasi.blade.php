@@ -10,9 +10,8 @@
     <div class="container">
         <div class="border rounded m-3">
             <div class="m-3">
-                <button class="btn btn-primary" >Sesi Konsultasi</button>
+                <a href="<?=route('home.sesi')?>"><button class="btn btn-primary">Sesi Konsultasi</button></a>
                 <button class="btn btn-warning" >Riwayat Konsultasi</button>
-                <button class="btn btn-success" >Pemesanan</button>
                 <a href="<?=route('home')?>"><button class="btn btn-dark" >Homepage</button></a>
             </div>
         </div>

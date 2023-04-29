@@ -33,9 +33,12 @@
                         </div>
                         <br>
                         <div id="d-flex justify-content-center">
-                            <button class="btn btn-primary col-12" type="submit">login</button>
+                            <button class="btn btn-primary col-12" type="submit">Daftar</button>
                         </div>
                     </form>
+                    <div id="d-flex justify-content-center">
+                           <a href="/"><button class="btn btn-warning col-12" type="submit">Kembali</button></a>
+                    </div>
                 </div>
             </div>
         </div>

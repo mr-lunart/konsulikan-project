@@ -39,8 +39,9 @@ class Profil extends Controller
     public function profilUpdate(){
         $akun = new AkunHandler();
         $data = $_POST;
+        $user = session('query')[0]->user;
         $kolom = "`nama`= " . "'".$data['nama']."'";
-        $where = "user = 'Hamid'";
+        $where = "user ='".$user."'";
         try{
 
             $query = $akun->DB_UPDATE('client',$kolom,$where);

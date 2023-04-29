@@ -7,7 +7,7 @@ class SessionDB extends DB_HANDLER
 
     protected $fill=[
         'tabel'=>'`session`',
-        "kolom" => '`session_id`, `penerima`, `pengirim` '
+        "kolom" => '`session_id`, `client_uid`, `consultant_uid`, `order_id`, `status`'
     ];
 
     public function getSession($id)
@@ -15,7 +15,15 @@ class SessionDB extends DB_HANDLER
         $tabel = $this -> fill['tabel'];
         $select = $this -> fill['kolom'];
         $where = 'consultant_uid = "' . $id . '"';
-        $query = $this -> DB_READ_test($tabel,$select,$where);
+        $query = $this -> DB_READ_WHERE($tabel,$select,$where);
+        return $query;
+    }
+    public function getSessionClient($uid)
+    {
+        $tabel = $this -> fill['tabel'];
+        $select = $this -> fill['kolom'];
+        $where = 'client_uid = "'.$uid.'"';
+        $query = $this -> DB_READ_WHERE($tabel,$select,$where);
         return $query;
     }
     
