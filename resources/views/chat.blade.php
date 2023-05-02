@@ -10,6 +10,9 @@
 
 <body>
 
+<div class="border">
+    <button class="btn btn-danger m-2"> Logout Chat </button>
+</div>
 <div id="chat" class="overflow-auto mb-5">
     
 </div>
@@ -18,7 +21,8 @@
     <div class="input-group">
             <input id="pesan" class="form-control rounded-0" placeholder="..." name="pesan">
             <input id="idSession" type="hidden" value="<?=$id_sesi?>" name="idSession">
-            <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> => </button>
+            <input id="pengirim" type="hidden" value="<?=session('query')[0]->nama?>">
+            <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> Send </button>
     </div>
 </div>
 

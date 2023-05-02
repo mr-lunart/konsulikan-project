@@ -2,68 +2,85 @@ class PollingChat {
 
     constructor() {
         this.idSession = document.getElementById("idSession").value;
+        this.chat = document.getElementById("chat");
+        this.pengirim = document.getElementById("pengirim").value;
         this.no = 0;
-        this.p = document.createElement('p');
+        
     }
     // Method untuk mengubah nilai properti
     setMyProperty(value) {
-        this.no += value;
+        this.no = value;
     }
 
-    appendTeks(value) {
-        document.getElementById("chat").insertAdjacentHTML('beforeend', value);
-
+    appendTeks(teks,nama) {
+        var text            = document.createTextNode(teks);
+        var paragraf        = document.createElement('p');
+        var strong          = document.createElement('strong');
+        strong.innerText    = nama + " : ";
+        paragraf.appendChild( strong );
+        paragraf.appendChild(text);
+        paragraf.classList.add('m-3');
+        let div = document.createElement('div');
+        div.appendChild(paragraf);
+        div.classList.add('border')
+        this.chat.appendChild(div);
     }
-    pollData() {
+
+    pollData() 
+    {
+        const self = this;
 
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    
-        const self = this;
 
         $.ajax ({
+
             url: 'poll',
             type: 'GET',
-            data: {idSesi:self.idSession},
+            data: { 
+                idSesi:     self.idSession,
+                sessionNol: self.no
+            },
             
             success: function(response) {
-
-                var no = response[(response.length)-1]["no"]
-
-                console.log(self.no)
-                if ( self.no <  no ) {
-                    
-                    // for (let i = 0; i < response.length ; i++) {
-                    //     self.p.innerText=response[i]["pesan"];
-                    console.log(no);
-                    self.setMyProperty(1);
-                    //     self.appendTeks(self.p);
-                    //     console.log(response[i]["no"]+' : '+response[i]["pesan"]);
-                    // }
-                }},
-
+                // let no = response[(response.length) - 1]["no"];
+               
+                for (let i = 0; i < response.length ; i++) {
+                    self.setMyProperty(response[i]['no']);
+                    self.appendTeks(response[i]['pesan'],response[i]['pengirim']);
+                }
+                // if ( self.no < no ) {
+                //     
+                //     // 
+                //     //    
+                //     //     console.log(response[i]["no"]+' : '+response[i]["pesan"]);
+                //     // }
+                // }},
             // complete: function() {
             //     // Lakukan polling lagi setelah 2 detik
             //     setInterval(function(){self.pollData}, 5000);
-            // }
-        });
+            // 
+            }
+        });  
     }
-    Timeloop()
+
+    start()
     {
         this.fetchInterval = setInterval(() => {
             this.pollData();
-        }, 3000);
+        }, 2000);
     }
 
 }
 
 
 function pushData() {
-    var text = $("#pesan").val()
+    let text = $("#pesan").val()
     let idSesi = document.getElementById("idSession").value;
+    let pengirim = document.getElementById("pengirim").value;
 
     $.ajaxSetup({
         headers: {
@@ -75,8 +92,9 @@ function pushData() {
         url : "push",
         type : 'POST',
         data : { 
-            pesan:text,
-            id:idSesi
+            pesan    :text,
+            id       :idSesi,
+            pengirim : pengirim
         },
 
         success: function(response) {
@@ -91,4 +109,4 @@ function pushData() {
 
 $("#chat-submit").click( function(){ pushData() } );
 let polling = new PollingChat();
-polling.Timeloop();
+polling.start();

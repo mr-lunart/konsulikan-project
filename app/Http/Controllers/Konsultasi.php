@@ -29,7 +29,7 @@ class Konsultasi extends Controller
         $uid_con = $_POST['uid_con'];
         $order_id = rand();
         $query = $this -> createSession($uid_cos,$uid_con,$order_id);
-        $token = Konsultasi::midtrans($uid_cos,$harga,$order_id);
+        $token = Konsultasi::Midtrans($uid_cos,$harga,$order_id);
         return response($token);
     }
     public static function createSession($cos,$con,$order) {
@@ -62,7 +62,7 @@ class Konsultasi extends Controller
         }
     }
 
-    public static function midtrans ($nama,$harga,$order_id) {
+    public static function Midtrans ($nama,$harga,$order_id) {
 
         \Midtrans\Config::$serverKey = 'SB-Mid-server-8P7RuPlBiPDvVKgvyVEmt0yA';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).

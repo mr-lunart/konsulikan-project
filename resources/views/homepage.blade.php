@@ -1,22 +1,65 @@
 <?php
 $query = session('query');
 ?>
+@extends('layouts.homepage')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Login</title>
-</head>
+@section('navbar')
+    <nav class="navbar">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">Sidebar</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                    Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                    Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                    Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                    Products
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                    Customers
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+@endsection
 
-<body>
-    <div class="container">
-        <br>
+@section('content')
+    <div class="m-3">
         <h3>Selamat Datang <?php echo( $query[0] -> nama ) ?> </h3>
         <a href="homepage/profil"><button class="btn btn-primary"> Profil </button></a>
         <a href="homepage/konsultan"><button class="btn btn-warning"> Konsultasi </button></a>
-        <button onclick="window.location.replace('<?= route('home.logout') ?>')" class="btn btn-danger"> Logout </button>
+        <button onclick="logoutConfirm()" class="btn btn-danger"> Logout </button>
     </div>
-</body>
-</html>
+@endsection
+
+@section('footer')
+    <script>
+        function logoutConfirm(){
+            if(confirm("Apakah Anda ingin Logout?")){
+                window.location.replace('<?= route('home.logout') ?>')
+            }
+            else{}
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+@endsection

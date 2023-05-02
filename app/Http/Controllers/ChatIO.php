@@ -8,7 +8,8 @@ class ChatIO extends Controller
     public function push() {
         $data = $_POST['pesan'];
         $idSesi = $_POST['id'];
-        $data_string = "0,'".$idSesi."','','','".$data."',NOW()";
+        $pengirim = $_POST['pengirim'];
+        $data_string = "0,'".$idSesi."','','".$pengirim."','".$data."',NOW()";
         $data=Chat::DB_SEND($data_string);
         return response($data);
    
@@ -16,7 +17,9 @@ class ChatIO extends Controller
 
     public function poll() {
         $id = $_GET['idSesi'];
-        $data = Chat::DB_POLL($id);
+        $no = $_GET['sessionNol'];
+        $where = "`session_id` = ".$id." AND `no` > ".$no;
+        $data = Chat::DB_POLL($where);
         return response($data);
     }
 }

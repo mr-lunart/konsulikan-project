@@ -13,6 +13,18 @@
                 <a href="<?=route('home.sesi')?>"><button class="btn btn-primary">Sesi Konsultasi</button></a>
                 <button class="btn btn-warning" >Riwayat Konsultasi</button>
                 <a href="<?=route('home')?>"><button class="btn btn-dark" >Homepage</button></a>
+                <br>
+                <br>
+                <form class="d-flex" role="search">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Pilih Jenis Ikan</option>
+                        <option value="1">Lele</option>
+                        <option value="2">Nila</option>
+                    </select>
+                    <p class="ms-2 me-2"></p>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
         <div class="m-3">

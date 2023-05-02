@@ -15,11 +15,13 @@
             @foreach ($query as $data)
             <div class="border rounded mb-3">
                 <div class="m-3">
-                    <strong> {{ $data->consultant_uid }} </strong>
-                        
-                        <a href="<?= route('dashboard.chat') ?>">
-                            <button  class="btn btn-primary">Mulai Chat</button>
-                        </a>
+                    <strong> </strong>
+                    <strong> Sesi Konsultasi No : <?=$data->session_id?> </strong>
+                    <br>
+                    <br> 
+                    <a href="<?= route('homepage.chat').'?session_id='.$data->session_id ?>">
+                        <button  class="btn btn-primary">Mulai Chat</button>
+                    </a>
                 </div>
             </div>
             @endforeach

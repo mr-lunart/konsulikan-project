@@ -28,4 +28,8 @@ class Dashboard extends Controller
         $query = $db -> getSession($session -> uid);
         return view('clientlist',['query'=>$query]);
     }
+
+    public function dashboardProfil(){
+        return view('profilKonsultan');
+    }
 }
