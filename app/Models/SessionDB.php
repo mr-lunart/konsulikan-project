@@ -28,6 +28,15 @@ class SessionDB extends DB_HANDLER
         $query = $this -> DB_READ_WHERE($tabel,$select,$where);
         return $query;
     }
+
+    public function checkSessionClient($uidClient, $uidConsul)
+    {
+        $tabel = $this -> fill['tabel'];
+        $select = $this -> fill['kolom'];
+        $where = "client_uid = '".$uidClient."' AND consultant_uid = '".$uidConsul."'";
+        $query = $this -> DB_READ_WHERE($tabel,$select,$where);
+        return $query;
+    }
     
     public function setSession($client,$consultant,$order)
     {
@@ -43,6 +52,11 @@ class SessionDB extends DB_HANDLER
         $select = "`status`= 'settlement'";
         $where = 'order_id ="' . $order . '"';
         $query = $this -> DB_UPDATE($tabel,$select,$where);
+    }
+    public function removeSession($sesi)
+    {
+        $query = $this -> DB_DELETE($sesi);
+        return $query;
     }
 
 }

@@ -39,6 +39,7 @@ Route::get('dashboard/home',[Dashboard::class, 'home']) -> name('dashboard.home'
 Route::get('dashboard/profil',[Dashboard::class, 'dashboardProfil']) -> name('dashboard.profil');
 Route::get('dashboard/profil/update',[Profil::class, 'dashboardProfil']) -> name('dashboard.profil.update');
 Route::post('dashboard/profil/update',[Profil::class, 'dashboardProfilUpdate']) -> name('dashboard.profil.save');
+Route::post('dashboard/profil/update/password',[Profil::class, 'dashboardProfilUpdatePassword']) -> name('dashboard.profil.pass');
 Route::get('dashboard/client',[Dashboard::class, 'clientList']) -> name('dashboard.client');
 Route::get('dashboard/client/chat',[Chat::class, 'chat']) -> name('dashboard.chat');
 Route::get('dashboard/logout',[Login::class, 'dashboardLogout']) -> name('dashboard.logout');
@@ -46,14 +47,17 @@ Route::get('dashboard/logout',[Login::class, 'dashboardLogout']) -> name('dashbo
 Route::get('homepage/profil', [Homepage::class, 'profil']) -> name('home.profil');
 Route::get('homepage/profil/update', [Profil::class, 'update']) -> name('profil.update');
 Route::post('homepage/profil/update', [Profil::class, 'profilUpdate']) -> name('profil.save');
+Route::post('homepage/profil/update/password', [Profil::class, 'profilUpdatePassword']) -> name('profil.pass');
 
 
 Route::get('homepage/konsultan', [Konsultasi::class, 'listKonsul']) -> name('home.konsultan');
+Route::post('homepage/konsultan/cari', [Konsultasi::class, 'cari']) -> name('home.cari');
+Route::post('homepage/konsultan/detail', [Konsultasi::class, 'detailKonsultan']) -> name('home.konsultan.detail');
 Route::post('homepage/konsultan/pemesanan', [Konsultasi::class, 'setkonsultan']) -> name('home.pesanan');
 Route::post('homepage/konsultan/token', [Konsultasi::class, 'getToken']) -> name('home.token');
 Route::any('homepage/konsultan/payment/full', [Konsultasi::class, 'midtransPay']) -> name('home.payment');
 Route::get('homepage/konsultan/sesi', [Sesi::class, 'setSesi']) -> name('home.sesi');
-Route::get('homepage/client/chat',[Chat::class, 'chat']) -> name('homepage.chat');
+Route::get('homepage/client/chat',[Chat::class, 'clientchat']) -> name('homepage.chat');
 
 
 Route::get('daftar', [Profil::class, 'daftar']);
@@ -63,3 +67,5 @@ Route::post('dashboard/client/push', [ChatIO::class, 'push']);
 Route::get('dashboard/client/poll', [ChatIO::class, 'poll']);
 Route::post('homepage/client/push', [ChatIO::class, 'push']);
 Route::get('homepage/client/poll', [ChatIO::class, 'poll']);
+
+Route::post('dashboard/chat/end',[Chat::class,'endSession']) -> name('chat.end');

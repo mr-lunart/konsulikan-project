@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <meta name="csrf-token" content="<?php echo(csrf_token()) ?> ">
-    <title>Login</title>
+    <title>Pembayaran</title>
 </head>
 
 <body>
@@ -14,9 +14,15 @@
             <div class="m-4">
                 <strong> {{ $query[0]->nama }} </strong>
                 <p><strong>Tarif : </strong>Rp.{{ $query[0]->tarif }}</p>
-                <p>Durasi 1 Sesi : <strong>30 Menit</strong></p>
+                <p><strong>Jenis Ikan</strong> : {{ $query[0]->ikan }}</p>
+                <p>1 Sesi <strong></strong></p>
                 <button onclick="snaptoken()" class="btn btn-primary"> Checkout </button>
-                <button onclick=" window.location.replace('<?=route('home.konsultan')?>')" class="btn btn-danger"> Cancel </button>
+                <form method="post" action="<?= route('home.konsultan.detail') ?>">
+                        @csrf
+                        <input type="hidden" value="<?= $query[0]->uid ?>" name="uid">
+                        <p> </p>
+                        <button class="btn btn-danger">Kembali</button>
+                </form>
             </div>
         </div>
     </div>

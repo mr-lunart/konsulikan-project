@@ -22,12 +22,12 @@
                             @csrf
                             <div class="form-group">
                                 <label class="form-text" for="">User</label>
-                                <input class="form-control" type="text" name="user">
+                                <input class="form-control" type="text" name="user" required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-text" for="">Pass</label>
-                                <input class="form-control" type="password" name="pass">
+                                <input class="form-control" type="password" name="pass" required>
                             </div>
                             <br>
                             <div id="d-flex justify-content-center">

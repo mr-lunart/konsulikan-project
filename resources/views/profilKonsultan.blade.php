@@ -22,8 +22,24 @@ $query = session('query')
                     <p><strong>Username : </strong> <?php echo($query[0] -> user)?> </p>
                 </div>
                 <div>
-                    <a href="<?=route('dashboard.profil.update')?>"><button class="btn btn-primary">Ubah Profil</button></a>
-                    <button onclick=" window.location.replace('<?=route('dashboard.home')?>') " class="btn btn-success">Kembali Ke Home</button>
+                    <p><strong>Email : </strong> <?php echo($query[0] -> email)?> </p>
+                </div>
+                <div>
+                    <p><strong>No Handphone : </strong> <?php echo($query[0] -> telephone)?> </p>
+                </div>
+                <div>
+                    <p><strong>Jenis Ikan : </strong> <?php echo($query[0] -> ikan)?> </p>
+                </div>
+                <div>
+                    <p><strong>Tarif : </strong> <?php echo($query[0] -> tarif)?> </p>
+                </div>
+                <div>
+                    <p><strong>Deskripsi : </strong> <?php echo($query[0] -> deskripsi)?> </p>
+                </div>
+                <div>
+                    <a href="<?=route('dashboard.profil.update')?>"><button class="btn btn-primary">Edit</button></a>
+                    <button onclick=" window.location.replace('<?=route('dashboard.home')?>') " class="btn btn-success">Kembali Ke Dahsboard</button>
+                    <button onclick=" window.location.replace('<?= route('dashboard.logout') ?>')" class="btn btn-danger"> Logout </button>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
     
         <div class=" container">
             <div class="m-3">
-                <a href="{{ route('home') }}"> <button class="btn btn-primary ">Kembali</button> </a>
+                <a href="{{ route('home.konsultan') }}"> <button class="btn btn-primary ">Kembali</button> </a>
             </div>
             @foreach ($query as $data)
             <div class="border rounded mb-3">

@@ -11,11 +11,7 @@
 <body>
 
 <div class="border">
-    <form action="<?=route('chat.end')?>" method="post">
-    @csrf
-        <input id="idSession" type="hidden" value="<?=$id_sesi?>" name="idSession">
-        <button class="btn btn-danger m-2"> Akhiri Chat </button>
-    </form>
+    <a href="<?=route('home.konsultan')?>"><button class="btn btn-danger m-2">Kembali</button></a>
 </div>
 <div id="chat" class="overflow-auto mb-5">
     

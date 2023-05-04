@@ -16,11 +16,48 @@ class Konsultasi extends Controller
         return view('konsultasi', ['data' => $data]);
     }
 
+    public function detailKonsultan() {
+        $uid = $_POST['uid'];
+        $konsultan = new Konsultan();
+        $data = $konsultan->getKonsultanFromUid($uid);
+
+        $session = new SessionDB();
+        $uidClient = session('query')[0] -> uid;
+        $sesi = $session -> checkSessionClient($uidClient, $uid);
+
+        return view('detailKonsultan',['query'=>$data, 'sesi'=>$sesi]);
+    }
+    
     public function setkonsultan() {
         $uid = $_POST['uid'];
         $konsultan = new Konsultan();
         $data = $konsultan->getKonsultanFromUid($uid);
         return view('pembayaran',['query'=>$data]);
+    }
+
+    public function cari() {
+
+        $konsultan = new Konsultan();
+        if($_POST['ikan']==0 && $_POST['nama']=="") {
+            
+            $data = $konsultan->getKonsultan();
+            return view('konsultasi', ['data' => $data]);
+        }
+        elseif($_POST['ikan'] != 0 && $_POST['nama'] != "") {
+            $data = $konsultan->getKonsultanBoth($_POST['ikan'],$_POST['nama']);
+            return view('konsultasi', ['data' => $data]);
+        }
+        elseif($_POST['ikan'] != 0 && $_POST['nama'] == "")
+        {
+            $data = $konsultan->getKonsultanIkan($_POST['ikan']);
+            return view('konsultasi', ['data' => $data]);
+        }
+        elseif($_POST['ikan'] == 0 && $_POST['nama'] != "")
+        {
+            $data = $konsultan->getKonsultanName($_POST['nama']);
+            return view('konsultasi', ['data' => $data]);
+        }
+        
     }
 
     public function getToken() {
@@ -47,14 +84,14 @@ class Konsultasi extends Controller
         if ($status=="settlement"){
             $session = new SessionDB();
             $query = $session -> updateSession($order);
-            echo("Transaksi Berhasi!! \n");
+            echo("Transaksi Berhasi!! : ");
             print("Silahkan Menutup Window Ini dan Kembali ke Website Utama");
         }
 
         elseif ($status=="deny")
         {
-            echo("Maaf Transaksi Gagal");
-            echo("Silahkan Menutup Window Ini dan Kembali ke Website Utama");
+            echo("Maaf Transaksi Gagal : ");
+            echo("Hubungi Admin Website atau Lakukan Pemesanan Ulang");
         }
 
         else{

@@ -17,11 +17,11 @@
     {
         if($hasil==true)
         {
-            echo("<script>alert('Sukses Mendaftar')</script>");
+            echo("<script>alert('Berhasil Mendaftarkan Akun')</script>");
         }
         elseif($hasil==false)
         {
-            echo("<script>alert('Gagal Mendaftar, Coba Gunakan Username yang Lain')</script>");
+            echo("<script>alert('Gagal Mendaftar, Username Telah Terdaftar')</script>");
         }
     }
 ?>

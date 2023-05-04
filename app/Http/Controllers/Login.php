@@ -33,10 +33,11 @@ class Login extends Controller
             $hasil = 0;
         }
 
-        if ( $hasil==1 ) {   
+        if ( $hasil == 1 ) {   
 
             if ($user == $query[0]->user && $pass == $query[0]->pass)
             { 
+                
                 Session::put('query', $query);
                 return redirect()->route('home');
             }
@@ -52,7 +53,9 @@ class Login extends Controller
             
             $status = 1;
             return redirect()->route('login.statue', ['status' => $status]);
-        }        
+        }
+        
+
     }
     public function dashboardLogin() {
 

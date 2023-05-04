@@ -7,8 +7,8 @@ class Autentikasi extends DB_HANDLER
     protected $database = [
         "tabelUser" => '`client`',
         "tabelConsultant" => 'consultant',
-        "dataUser"  => ' `uid`, `nama`, `user`, `pass` ',
-        "dataConsultant" => ' `uid`, `nama`, `user`, `pass` '
+        "dataUser"  => '`uid` ,`nama` ,`user` ,`pass` ,`email` ,`noHP`',
+        "dataConsultant" => ' `uid`, `nama`, `user`, `pass`,`email`,`telephone`,`ikan`,`tarif`,`deskripsi`'
     ];
 
     public function getAkunKlien($where){

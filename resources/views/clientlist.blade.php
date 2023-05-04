@@ -12,16 +12,19 @@
             <div class="m-3">
                 <a href="{{ route('dashboard.home') }}"> <button class="btn btn-primary ">Kembali</button> </a>
             </div>
-            <div class="card m-3 p-3">
-                <div>
-                    <p>Chat Session <strong>{{ $query[0]->session_id }}</strong> </p>
-                </div>
-                <div> 
-                    <a href="<?= route('dashboard.chat').'?session_id='.$query[0]->session_id ?>">
+            @foreach ($query as $data)
+            <div class="border rounded mb-3">
+                <div class="m-3">
+                    <strong> </strong>
+                    <strong> Sesi Konsultasi No : <?=$data->session_id?> </strong>
+                    <br>
+                    <br> 
+                    <a href="<?= route('dashboard.chat').'?session_id='.$data->session_id ?>">
                         <button  class="btn btn-primary">Mulai Chat</button>
                     </a>
                 </div>
             </div>
+            @endforeach
         </div>
 </body>
 </html>

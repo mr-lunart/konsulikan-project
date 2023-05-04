@@ -11,8 +11,13 @@
 </head>
 <body>
     <div class="d-flex flex-row">
-    @yield('navbar')
-    @yield('content')
+        <div style="width: 280px;">
+        @yield('sidebar')
+        </div>
+        <div class="flex-fill">
+            @yield('navbar')
+            @yield('content')
+        </div>
     </div>
     <footer>
         @yield('footer')

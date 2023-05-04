@@ -40,10 +40,14 @@ class Profil extends Controller
         return view('profil-update');
     }
     public function profilUpdate(){
+
         $akun = new AkunHandler();
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $noHP = $_POST['noHP'];
         $data = $_POST;
         $user = session('query')[0]->user;
-        $kolom = "`nama`= " . "'".$data['nama']."'";
+        $kolom = "`nama`='".$nama."',`email`='".$email."',`noHP`='".$noHP."'";
         $where = "user ='".$user."'";
         try{
 
@@ -56,6 +60,50 @@ class Profil extends Controller
         }
         return view('profil-update', ['data' => $data, 'hasil' => $hasil]);
     }
+    public function profilUpdatePassword(){
+        $passChange = 0;
+        $akun = new AkunHandler();
+        $user = session('query')[0]->user;
+        $oldPass = $_POST['oldPass'];
+        $newPass = $_POST['newPass'];
+        $ReNewPass = $_POST['ReNewPass'];
+        $kolom = "`pass`='".$newPass."'";
+        $where = "user ='".$user."'";
+        if($oldPass == session('query')[0]->pass){
+            $passChange += 1;   
+        }
+        elseif($oldPass != session('query')[0]->pass)
+        {
+            return view('profil-update', ['pass' => $passChange]);
+        }
+
+        if($newPass == $ReNewPass){
+            $passChange += 1;
+        }
+        elseif($newPass != $ReNewPass)
+        {
+            return view('profil-update', ['pass' => $passChange]);
+        }
+
+        if($passChange==2){
+
+            try{
+
+                $query = $akun->DB_UPDATE('client',$kolom,$where);
+                $hasil = true;
+    
+            } catch(QueryException $e) {
+                $query = $e -> getMessage();
+                $hasil = false;
+            }
+            return view('profil-update', ['pass' => $query]);
+
+        }
+        
+        echo($passChange);
+
+        
+    }
 
     public function dashboardProfil(){
         return view('profilKonsultanUpdate');
@@ -63,9 +111,15 @@ class Profil extends Controller
 
     public function dashboardProfilUpdate(){
         $akun = new AkunHandler();
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $noHP = $_POST['noHP'];
+        $ikan = $_POST['ikan'];
+        $tarif = $_POST['tarif'];
+        $desk = $_POST['deskripsi'];
         $data = $_POST;
         $user = session('query')[0]->user;
-        $kolom = "`nama`= " . "'".$data['nama']."'";
+        $kolom = "`nama`='".$nama."',`email`='".$email."',`telephone`='".$noHP."',`ikan`='".$ikan."',`tarif`='".$tarif."',`deskripsi`='".$desk."'";
         $where = "user ='".$user."'";
         try{
 
@@ -76,7 +130,49 @@ class Profil extends Controller
             $query = $e -> getMessage();
             $hasil = false;
         }
-        return view('profil-update', ['data' => $data, 'hasil' => $hasil]);
+        return view('profilKonsultanUpdate', ['data' => $data, 'hasil' => $hasil]);
+    }
+
+    public function dashboardProfilUpdatePassword(){
+        $passChange = 0;
+        $akun = new AkunHandler();
+        $user = session('query')[0]->user;
+        $oldPass = $_POST['oldPass'];
+        $newPass = $_POST['newPass'];
+        $ReNewPass = $_POST['ReNewPass'];
+        $kolom = "`pass`='".$newPass."'";
+        $where = "user ='".$user."'";
+        if($oldPass == session('query')[0]->pass){
+            $passChange += 1;   
+        }
+        elseif($oldPass != session('query')[0]->pass)
+        {
+            return view('profilKonsultanUpdate', ['pass' => $oldPass]);
+        }
+
+        if($newPass == $ReNewPass){
+            $passChange += 1;
+        }
+        elseif($newPass != $ReNewPass)
+        {
+            return view('profilKonsultanUpdate', ['pass' => $passChange]);
+        }
+
+        if($passChange==2){
+
+            try{
+
+                $query = $akun->DB_UPDATE('client',$kolom,$where);
+                $hasil = true;
+    
+            } catch(QueryException $e) {
+                $query = $e -> getMessage();
+                $hasil = false;
+            }
+            return view('profilKonsultanUpdate', ['pass' => $query]);
+
+        }
+
     }
 }
 ?>

@@ -37,9 +37,9 @@ class DB_HANDLER
         return($query);
     }
     
-    public static function DB_DELETE()
+    public static function DB_DELETE($sesi)
     {
-
+        $query = DB::delete("DELETE FROM `session` WHERE `session_id` = ".$sesi);
     }
 }
 

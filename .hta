@@ -1,7 +1,0 @@
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^konsultani.my.id$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.konsultani.my.id$
-RewriteCond %{REQUEST_URI} !public/
-RewriteRule (.*) /public/ [L]
-
-

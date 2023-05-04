@@ -16,12 +16,12 @@
                 <br>
                 <form class="d-flex" role="search" action="<?=route('home.cari')?>" method="post">
                 @csrf
-                    <select name="ikan" class="form-select" aria-label="Default select example">
-                        <option value="0" name="ikan" selected>Pilih Jenis Ikan</option>
+                    <select name="ikan" class="form-select" aria-label="Default select example" >
+                        <option value="0" selected>Pilih Jenis Ikan</option>
                         <option value="lele">Lele</option>
                         <option value="gurame">Gurame</option>
                     </select>
-                    <p class="ms-2 me-2"></p>
+                    <p> </p>
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nama">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>

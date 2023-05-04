@@ -1,4 +1,13 @@
-.navbar
-{
-    position: relative;
+.sidebar{
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.navbar{
+    height: 100%;
+}
+.br{
+    width: 80%;
 }
