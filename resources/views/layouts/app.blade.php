@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link type="text/css" href="{{ asset('css/homepage.css') }}" rel="stylesheet">
-    <title>Halaman Login</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <div class="d-flex flex-row">
-        <div style="width: 280px;">
-        @yield('sidebar')
+        <div class="sidebox">
+            @yield('sidebar')
         </div>
         <div class="flex-fill">
             @yield('navbar')

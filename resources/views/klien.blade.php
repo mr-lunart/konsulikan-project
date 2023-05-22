@@ -46,54 +46,13 @@ $query = session('consultantSession');
 @endsection
 
 @section('content')
-    <div class="container">
-            <div class="m-3">
-            <div class="card ">
-                <div class="dflex m-3">
-                    <h4>Data Profil</h4>
-                    <hr>
-                    <div class="d-flex flex-row">
-                        <div class="d-flex flex-column">
-                            <p><strong>Nama</strong></p>
-                            <p><strong>Email</strong></p>
-                            <p><strong>No Handphone</strong></p>
-                            <p><strong>Jenis Ikan</strong></p>
-                            <p><strong>Tarif Konsultasi</strong></p>
-                            <p><strong>Deskripsi</strong></p>
-                        </div>
-                        <div class=" px-2">
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <p><?=($query[0] -> nama)?></p>
-                            <p><?=($query[0] -> email)?></p>
-                            <p><?=($query[0] -> telephone)?></p>
-                            <p><?=( ucfirst($query[0] -> ikan) )?></p>
-                            <p><?= 'IDR '.number_format(floatval($query[0] -> tarif),0,'.','.')?></p>
-                            <p><?=($query[0] -> deskripsi)?></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                        <a href="<?=route('dashboard.profil.form')?>"><button class="btn btn-primary">Edit</button></a>
-                        <button onclick="logoutConfirm()" class="btn btn-danger"> Logout </button>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
 @endsection
 
 @section('footer')
     <script>
         function logoutConfirm(){
             if(confirm("Apakah Anda ingin Logout?")){
-                window.location.replace('<?= route('dashboard.logout') ?>')
+                window.location.replace('<?= route('home.logout') ?>')
             }
             else{}
         }

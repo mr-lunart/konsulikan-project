@@ -16,7 +16,7 @@
                 <p><strong>Tarif : </strong>Rp.{{ $query[0]->tarif }}</p>
                 <p><strong>Jenis Ikan</strong> : {{ $query[0]->ikan }}</p>
                 <p>1 Sesi <strong></strong></p>
-                <button onclick="snaptoken()" class="btn btn-primary"> Checkout </button>
+                <button onclick="snaptoken()" class="btn btn-primary"> Bayar </button>
                 <form method="post" action="<?= route('home.konsultan.detail') ?>">
                         @csrf
                         <input type="hidden" value="<?= $query[0]->uid ?>" name="uid">

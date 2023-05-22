@@ -6,7 +6,7 @@ class Autentikasi extends DB_HANDLER
 {
     protected $database = [
         "tabelUser" => '`client`',
-        "tabelConsultant" => 'consultant',
+        "tabelConsultant" => "`consultant`",
         "dataUser"  => '`uid` ,`nama` ,`user` ,`pass` ,`email` ,`noHP`',
         "dataConsultant" => ' `uid`, `nama`, `user`, `pass`,`email`,`telephone`,`ikan`,`tarif`,`deskripsi`'
     ];

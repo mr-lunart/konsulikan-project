@@ -1,7 +1,7 @@
 <?php
-$query = session('query');
+$query = session('consultantSession');
 ?>
-@extends('layouts.homepage')
+@extends('layouts.app')
 
 @section('sidebar')
     <div class="sidebar bg-dark text-white ">
@@ -9,33 +9,27 @@ $query = session('query');
         <div class="fs-4 text-center"> <i><b> Konsulikan </b></i> </div>
         <hr>
         <nav class="navbar p-3">
-            
             <ul class="nav nav-pills flex-column mb-auto" style="width: 250px;">
-            <li class="nav-item ">
-                <a href="homepage" class="nav-link active" aria-current="page">
-                Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="homepage/konsultan" class="nav-link link-dark text-white">
-                Konsultasi
-                </a>
-            </li>
-            <li>
-                <a href="homepage/profil" class="nav-link link-dark text-white">
-                Profil
-                </a>
-            </li>
-            <li>
+                <li class="nav-item ">
+                    <a href="<?=route('dashboard')?>" class="nav-link active" aria-current="page">
+                    Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=route('dashboard.profil')?>" class="nav-link link-dark text-white">
+                    Profil
+                    </a>
+                </li>
+                <li>
                 <a href="#" class="nav-link link-dark text-white">
-                Kalkulator Pakan
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark text-white">
-                Riwayat
-                </a>
-            </li>
+                    Chat
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=route('dashboard.klien')?>" class="nav-link link-dark text-white">
+                    Klien
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -45,7 +39,7 @@ $query = session('query');
     <div class="bg-dark text-white">
         <ul class="nav justify-content-end ">
             <li class="nav-item">
-                <h6 class="sf-4 m-3">Selamat Datang | <b><?= $query[0] -> nama ?></b></h6>
+                <h6 class="sf-4 m-3">Selamat Datang, <b><?= $query[0] -> nama ?></b></h6>
             </li>
         </ul>
     </div>
