@@ -57,7 +57,6 @@ else {
                                     <strong>Jenis Ikan</strong>
                                     <select class="form-select" aria-label="Default select example" name="ikan" id="">
                                         <option value="1">Lele</option>
-                                        <option value="2">Gurame</option>
                                     </select>
                                 </div>
                                 <div class="form-grup">
@@ -83,41 +82,43 @@ else {
                 </div>
             </div>
             <br>
-            <div>
-            <h4>Tabel Evaluasi Panen </h4> 
-            </div>
-            <hr>
             <div class="card">
-                <table class="table">
-                    <thead>
-                        
-                        <tr>
-                            @foreach ($headTabel as $header)
-                            <th class="text-break text-center" scope="col" style="font-size:10pt;"> <?=$header?> </th>
+                <div class="m-3 mb-0">
+                <h4>Tabel Evaluasi Panen </h4> 
+                </div>
+                <hr>
+                <div class="">
+                    <table class="table">
+                        <thead>
+                            
+                            <tr>
+                                @foreach ($headTabel as $header)
+                                <th class="text-break text-center" scope="col" style="font-size:10pt;"> <?=$header?> </th>
+                                @endforeach
+                                <th class="text-break text-center" scope="col" style="font-size:10pt;"> Efisiensi Pakan </th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $row)
+                            <tr>
+                                @foreach ($row as $cell)
+                                <td class="fs-6 text-break text-center" scope="col"> <?=$cell?></td>
+                                @endforeach
+                                <td class="fs-6 text-break text-center" scope="col"> 
+                                <?php 
+                                $tambah = $row->{'Bobot Ikan Panen'} + $row->{'Bobot Ikan Mati'};
+                                $atas = $tambah - $row ->{'Bobot Ikan Awal'};
+                                $bawah = $atas / $row->{'Bobot Pakan'};
+                                echo(round($bawah * 100));
+                                ?>
+                                 % </td>
+                            </tr>
                             @endforeach
-                            <th class="text-break text-center" scope="col" style="font-size:10pt;"> Efisiensi Pakan </th>
-                        </tr>
                         
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $row)
-                        <tr>
-                            @foreach ($row as $cell)
-                            <td class="fs-6 text-break text-center" scope="col"> <?=$cell?></td>
-                            @endforeach
-                            <td class="fs-6 text-break text-center" scope="col"> 
-                            <?php 
-                            $tambah = $row->{'Bobot Ikan Panen'} + $row->{'Bobot Ikan Mati'};
-                            $atas = $tambah - $row ->{'Bobot Ikan Awal'};
-                            $bawah = $atas / $row->{'Bobot Pakan'};
-                            echo(round($bawah * 100));
-                            ?>
-                            </td>
-                        </tr>
-                        @endforeach
-                    
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 @endsection

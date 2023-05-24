@@ -55,6 +55,7 @@ Route::get('homepage/konsultasi',[HalKonsultasi::class,'setHalKonsultasi']) -> n
 Route::get('homepage/konsultasi/detail',[DetailKonsultasi::class,'detailKonsultan']) -> name('home.konsultan.detail');
 //fixed
 Route::get('homepage/pakan',[PanduanPakan::class,'panduanPakan']) -> name('home.pakan');
+Route::post('homepage/pakan',[PanduanPakan::class,'sendDataIkan']) -> name('home.pakan.panduan');
 //fixed
 Route::get('homepage/panen',[EvaluasiPanen::class,'evaluasiPanen']) -> name('home.panen');
 Route::post('homepage/panen',[EvaluasiPanen::class,'hitungEP']) -> name('home.ep');

@@ -12,6 +12,12 @@ class DB_HANDLER
         $query = DB::select("select ". $select ." from ". $tabel ." where ".$where);
         return($query);
     }
+
+    public static function DB_JOIN($tabelAwal,$select,$join,$where)
+    {
+        $query = DB::select(" SELECT ".$select." FROM ".$tabelAwal." ".$join." "." WHERE ".$where);
+        return $query;
+    }
     
     public static function DB_READ_WHERE($tabel, $select, $where)
     {

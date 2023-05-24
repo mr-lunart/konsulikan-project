@@ -13,7 +13,7 @@ class DataAkunKlien extends DB_HANDLER
 
     public function createDataAkun($data, $kolom) {
         $database = $this -> database;
-        $query = dataAkunKlien::DB_CREATE($database['tabel'], $data, $kolom);
+        $query = DataAkunKlien::DB_CREATE($database['tabel'], $data, $kolom);
         return $query;
     }
 
@@ -21,7 +21,7 @@ class DataAkunKlien extends DB_HANDLER
         $kolom = "`uid`= CONCAT('COS', no)";
         $where = "`user`='".$user."'";
         $database = $this -> database;
-        $query = dataAkunKlien::DB_UPDATE($database['tabel'],$kolom, $where);
+        $query = DataAkunKlien::DB_UPDATE($database['tabel'],$kolom, $where);
         return($query);
     }
 

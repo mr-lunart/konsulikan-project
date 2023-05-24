@@ -18,9 +18,9 @@ class RegisterKlien extends Controller
         $pass = $_POST['pass'];
         $noHP = $_POST['noHP'];
         $email = $_POST['email'];
-        $kolom = "`no`, `nama`, `user`, `pass`, `email`, `noHP`";
+        $kolom = "`id_klien`, `nama`, `user`, `pass`, `email`, `noHP`";
         $data = $no .",'" .$nama. "','" .$user. "','" .$pass. "','" .$email. "','" .$noHP. "'";
-        $akun = new DataAkunKlien;
+        $akun = new DataAkunKlien();
         try{
             $query = $akun->createDataAkun($data, $kolom);
             $hasil = true;
@@ -30,9 +30,9 @@ class RegisterKlien extends Controller
             $hasil = false;
         }
 
-        if( $hasil == true ) {
-            $akun->updateAkunUID($user);
-        }
+        // if( $hasil == true ) {
+        //     $akun->updateAkunUID($user);
+        // }
         return redirect() -> route( 'setRegister' ) -> with( ['hasil' => $hasil] );
     }
 }
