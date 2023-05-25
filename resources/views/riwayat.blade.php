@@ -33,7 +33,7 @@ $query = session('userSession');
                                 <p><strong>Konsultan</strong> : {{$list->nama}}</p>
                                 <p><strong>Tarif</strong> : {{$list->tarif_konsultasi}}</p>
                                 <p><strong>Tanggal Transaksi</strong> : {{$list->tanggal_transaksi}}</p>
-                                <a href=""><button class="btn btn-primary">Detail Konsultasi</button></a>
+                                <a href="<?= route('home.riwayat.detail').'?no='.$list->konsultasi_id?>"><button class="btn btn-primary">Detail Konsultasi</button></a>
                             </div>
                         </div>
                     @endforeach

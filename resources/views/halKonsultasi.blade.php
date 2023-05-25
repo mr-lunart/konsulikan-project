@@ -19,55 +19,82 @@ $query = session('userSession');
 
 @section('content')
     <div class="container">
-        <div class="m-3">
-            <a href=""><button class="btn btn-primary">Sesi Konsultasi</button></a>
-        </div>
-        <div class="m-3">
-            <div class="card">
-                <div class="m-3">
-                    <div class="m-3">
-                        <h4><strong> Konsultan</strong> </h4>
-                    </div>
-                    <hr>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="mt-3">
                     <div class="">
+                        <div class="m-3">
+                            
+                            <div class="row">
+                                <div class="col-4 align-self-center">
+                                    <strong class="display-6 fs-3 fw-bold">Daftar Konsultan</strong>
+                                </div>
+                                <div class="col-8 align-self-center">
+                                    <form class="d-flex" role="search" action="" method="post">
+                                    @csrf
+                                    <div class="form-grup m-2">
+                                        <select name="ikan" class="form-select" aria-label="Default select example" >
+                                            <option value="0" selected>Pilih Jenis Ikan</option>
+                                            <option value="lele">Lele</option>
+                                            <option value="gurame">Gurame</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-grup m-2">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nama">
+                                    </div>
+                                    
+                                    <div class="m-2">
+                                        <button class="btn btn-success" type="submit">Search</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr>
 
-                        <form class="d-flex" role="search" action="" method="post">
-                        @csrf
-                        <div class="form-grup m-2">
-                            <select name="ikan" class="form-select" aria-label="Default select example" >
-                                <option value="0" selected>Pilih Jenis Ikan</option>
-                                <option value="lele">Lele</option>
-                                <option value="gurame">Gurame</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-grup m-2">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nama">
-                        </div>
-                        
-                        <div class="m-2">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </div>
-                        </form>
-    
-                    </div>
+                            <div class=" m-3">
+                            @foreach ($data as $konsultan)
+                                <div class="row border rounded my-3 p-2">
+                                    <div class="col-2 border rounded align-self-center" style="width: 150px; height:150px;"></div>
+                                    <div class="col-8 align-self-center ">
+                                        <p class="fs-5 "> {{ $konsultan->nama }} </p>
+                                        <div class="d-flex flex-column ">
+                                            <div class="d-flex flex-row">
+                                                <table>
+                                                    <tr>
+                                                        <td><b class="flex-fill">Jenis Ikan</b></td>
+                                                        <td>: <?= ucfirst($konsultan->ikan) ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b class="flex-fill">Tarif</b></td>
+                                                        <td>: Rp.{{ $konsultan->tarif }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b class="flex-fill">Deskripsi</b></td>
+                                                        <td>: {{ $konsultan->deskripsi }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div class=" m-3">
-                    @foreach ($data as $konsultan)
-                        <div class="border rounded mb-3 row">
-                            <div class="col-1 border rounded" style="width: 150px; height: 150px;"></div>
-                            <div class="col m-3">
-                                <strong> {{ $konsultan->nama }} </strong>
-                                <p><strong>Tarif</strong> : Rp.{{ $konsultan->tarif }}</p>
-                                <p><strong>Jenis Ikan</strong> : <?= ucfirst($konsultan->ikan) ?></p>
-                                <p><strong>Deskripsi</strong> : {{ $konsultan->deskripsi }}</p>
-                                <a href="<?= route('home.konsultan.detail').'?no='.$konsultan->id_konsultan?>"><button class="btn btn-primary">Detai Konsultan</button></a>
+                                    <div class="col m-3 align-self-end ">
+                                        <a href="<?= route('home.konsultan.detail').'?no='.$konsultan->id_konsultan?>">
+                                            <button class="btn btn-primary">Detail</button>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            @endforeach
                             </div>
                         </div>
-                    @endforeach
                     </div>
                 </div>
             </div>
+            
+            <div class="">
+            </div>
+
         </div>
     </div>
 @endsection

@@ -61,6 +61,7 @@ Route::get('homepage/panen',[EvaluasiPanen::class,'evaluasiPanen']) -> name('hom
 Route::post('homepage/panen',[EvaluasiPanen::class,'hitungEP']) -> name('home.ep');
 //fixed
 Route::get('homepage/riwayat',[Riwayat::class,'setRiwayat']) -> name('home.riwayat');
+Route::get('homepage/riwayat/detail',[Riwayat::class,'setRiwayatDetail']) -> name('home.riwayat.detail');
 
 //Fixed
 Route::get('/consultant',[LoginKonsultan::class, 'setFormLoginKonsultan']) -> name('con.login');
