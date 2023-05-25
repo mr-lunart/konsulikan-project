@@ -1,29 +1,29 @@
 <?php
-$query = session('userSession');
+    $query = session('userSession');
 
-function dataIkan($param,$dataIkan){
-    if (isset($dataIkan) && count($dataIkan) > 0 ){
-        switch ($param) {
-            case 'jenis_ikan_id':
-                $result = $dataIkan[0]->jenis_ikan_id;
-                break;
-            case 'umur_ikan':
-                $result = $dataIkan[0]->umur_ikan;
-                break;
+    function dataIkan($param,$dataIkan){
+        if (isset($dataIkan) && count($dataIkan) > 0 ){
+            switch ($param) {
+                case 'jenis_ikan_id':
+                    $result = $dataIkan[0]->jenis_ikan_id;
+                    break;
+                case 'umur_ikan':
+                    $result = $dataIkan[0]->umur_ikan;
+                    break;
+            }
         }
+        else {
+            $result = NULL;
+        }
+        return $result;
+    }
+
+    if (isset($panduan) && count($panduan) > 0 ){
+        $headPanduan = array_keys(get_object_vars($panduan[0]));
     }
     else {
-        $result = NULL;
+        $headPanduan = [];
     }
-    return $result;
-}
-
-if (isset($panduan) && count($panduan) > 0 ){
-    $headPanduan = array_keys(get_object_vars($panduan[0]));
-}
-else {
-    $headPanduan = [];
-}
 ?>
 @extends('layouts.app')
 
@@ -32,13 +32,7 @@ else {
 @endsection
 
 @section('navbar')
-    <div class="bg-dark text-white">
-        <ul class="nav justify-content-end ">
-            <li class="nav-item">
-                <h6 class="sf-4 m-3">Selamat Datang, <b><?= $query[0] -> nama ?></b></h6>
-            </li>
-        </ul>
-    </div>
+    @include('parts.navbar')
 @endsection
 
 @section('content')

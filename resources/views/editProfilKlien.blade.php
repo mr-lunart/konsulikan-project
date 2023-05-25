@@ -8,13 +8,7 @@ $query = session('userSession');
 @endsection
 
 @section('navbar')
-    <div class="bg-dark text-white">
-        <ul class="nav justify-content-end ">
-            <li class="nav-item">
-                <h6 class="sf-4 m-3">Selamat Datang | <b><?= $query[0] -> nama ?></b></h6>
-            </li>
-        </ul>
-    </div>
+    @include('parts.navbar')
 @endsection
 
 @section('content')
@@ -50,45 +44,29 @@ $query = session('userSession');
 @endsection
 
 @section('footer')
-<?php
-    // if(isset($pass))
-    // {
-    //     if($pass==0)
-    //     {
-    //         echo("<script> 
-    //             alert('Password Salah');
-    //         </script>");
-    //     }
-    //     elseif($pass==1)
-    //     {
-    //         echo("<script> 
-    //             alert('Password Baru tidak Serupa');
-    //         </script>");
-    //     }
-    //     $pass=NULL;
-    // }
-    $hasil = session() -> get('hasil');
-    $data = session() -> get('data');
-    if(isset($hasil))
-    {
-        print($hasil);
-        if($hasil == true)
+    <?php
+        $hasil = session() -> get('hasil');
+        $data = session() -> get('data');
+        if(isset($hasil))
         {
-            session('userSession')[0]->nama = $data['nama'];
-            session('userSession')[0]->email = $data['email'];
-            session('userSession')[0]->noHP = $data['noHP'];
-            $hasil = NULL;
-            echo("<script> 
-                alert('Update Berhasil');
-            </script>");
-            
+            print($hasil);
+            if($hasil == true)
+            {
+                session('userSession')[0]->nama = $data['nama'];
+                session('userSession')[0]->email = $data['email'];
+                session('userSession')[0]->noHP = $data['noHP'];
+                $hasil = NULL;
+                echo("<script> 
+                    alert('Update Berhasil');
+                </script>");
+                
+            }
+            elseif($hasil == false)
+            {
+                echo("<script>alert('Update Gagal')</script>");
+            }
         }
-        elseif($hasil == false)
-        {
-            echo("<script>alert('Update Gagal')</script>");
-        }
-    }
-?>
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 @endsection

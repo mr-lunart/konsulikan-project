@@ -1,4 +1,4 @@
-<div class="sidebar bg-warning bg-gradient">
+<div id="sidebar" class="sidebar">
 
         <div class="fs-4 mt-4 text-center"> <i><b> Konsulikan </b></i> </div>
         <nav class="navbar p-3">

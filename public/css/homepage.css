@@ -4,7 +4,6 @@
 .sidebar{
     position: fixed;
     height: 100%;
-    
     z-index: 1;
     top: 0;
     left: 0;
@@ -16,4 +15,13 @@
 }
 .br{
     width: 80%;
+}
+
+#navbar
+{
+    background-color: aqua;
+}
+#sidebar
+{
+    background-color: aqua;
 }
