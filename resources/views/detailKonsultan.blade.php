@@ -13,10 +13,12 @@ $query = session('userSession');
 
 @section('content')
     <div class="container">
-    <div class="m-3">
-            <div class="card ">
+    <div class="row m-3">
+            <div class="col-6 card">
                 <div class="dflex m-3">
-                    <h4>Detail Konsultan</h4>
+                    <div class="">
+                        <strong class="fs-5 fw-bold">DETAIL KONSULTAN</strong>
+                    </div>
                     <hr>
                     <div class="d-flex flex-row">
                         <div class="d-flex flex-column">
@@ -40,7 +42,7 @@ $query = session('userSession');
                     </div>
                     <hr>
                     <div>
-                        <a href="<?=route('dashboard.profil.form')?>"><button class="btn btn-primary">Buat Sesi</button></a>
+                        <a href="<?=route('home.pembayaran')?>"><button class="btn btn-primary">Buat Sesi</button></a>
                         <button onclick="CancelConfirm()" class="btn btn-danger"> Cancel </button>
                     </div>
                 </div>

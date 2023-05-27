@@ -16,8 +16,8 @@ $query = session('userSession');
         <div class="m-3">
             <div class="card">
                 <div class="m-3">
-                    <div class="">
-                        <h4><strong> Riwayat Konsultasi </strong> </h4>
+                    <div class="text-center">
+                        <strong class="fs-5 fw-bold">RIWAYAT KONSULTASI</strong>
                     </div>
                     <div class=" m-3">
                     @foreach ($riwayat as $list)

@@ -22,8 +22,9 @@ else {
             <div class="m-3">
             <div class="card ">
                 <div class="dflex m-3">
-                    <h4>Evaluasi Panen
-                    </h4>
+                    <div class="text-center">
+                        <strong class="fs-5 fw-bold">EVALUASI PANEN</strong>
+                    </div>
                     <hr>
                     <form method="post" action="<?=route('home.ep')?>">
                         @csrf

@@ -9,7 +9,7 @@
     <link type="text/css" href="{{ asset('css/homepage.css') }}" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<body>
+<body class="bg-light">
     <div class="d-flex flex-row">
         <div class="sidebox">
             @yield('sidebar')

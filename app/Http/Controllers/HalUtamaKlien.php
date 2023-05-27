@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
+use App\Models\HasilPanen;
 
 class HalUtamaKlien extends Controller
 {
@@ -9,7 +10,10 @@ class HalUtamaKlien extends Controller
         $session = session('userSession');
 
         if( isset($session) ) {
-            return view('halUtamaKlien');
+            $id = $session[0]->id_klien;
+            $hasilPanen = new HasilPanen();
+            $data = $hasilPanen->getDataHasilPanen($id);
+            return view('halUtamaKlien',['data' => $data]);
         }
         elseif( isset($session)  == false ) {
             Session::flush();

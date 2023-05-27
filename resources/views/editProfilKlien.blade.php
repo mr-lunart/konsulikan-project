@@ -14,7 +14,9 @@ $query = session('userSession');
 @section('content')
     <div class="container">
         <div class="card p-3 m-5">
-            <h4><strong> Edit Profil </strong></h4>
+            <div class="text-center">
+                <strong class="fs-5 fw-bold">EDIT PROFIL</strong>
+            </div>
             <form onSubmit=" return confirm('Apakah Anda Yakin Ingin Menyimpan Data?')" action="<?=route('profil.save')?>" method="post">
                 @csrf
                 <div class="">
@@ -58,6 +60,7 @@ $query = session('userSession');
                 $hasil = NULL;
                 echo("<script> 
                     alert('Update Berhasil');
+                    window.location.href = '". route('home.profil') ."';
                 </script>");
                 
             }

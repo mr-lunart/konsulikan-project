@@ -16,7 +16,9 @@ $query = session('userSession');
             <div class="m-3">
             <div class="card ">
                 <div class="dflex m-3">
-                    <h4>Data Profil</h4>
+                    <div class="text-center">
+                        <strong class="fs-5 fw-bold">PROFIL</strong>
+                    </div>
                     <hr>
                     <div class="d-flex flex-row">
                         <div class="d-flex flex-column">

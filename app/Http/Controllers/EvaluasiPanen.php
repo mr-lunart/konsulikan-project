@@ -6,7 +6,6 @@ use App\Models\HasilPanen;
 class EvaluasiPanen extends Controller
 {
     
-   
     public function evaluasiPanen() {
         $id = session('userSession')[0]->id_klien;
         $hasilPanen = new HasilPanen();

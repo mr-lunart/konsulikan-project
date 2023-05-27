@@ -12,35 +12,37 @@ $query = session('userSession');
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container bg-white">
         <div class="row justify-content-center">
             <div class="col-11">
                 <div class="mt-3">
                     <div class="">
                         <div class="m-3">
                             
-                            <div class="row">
-                                <div class="col-4 align-self-center">
-                                    <strong class="display-6 fs-3 fw-bold">Daftar Konsultan</strong>
+                            <div class="row justify-content-between">
+
+                                <div class="col align-self-center">
+                                    <div class="">
+                                        <strong class="fs-5 fw-bold">LIST KONSULTAN</strong>
+                                    </div>
                                 </div>
-                                <div class="col-8 align-self-center">
+
+                                <div class="col-7">
                                     <form class="d-flex" role="search" action="" method="post">
-                                    @csrf
-                                    <div class="form-grup m-2">
-                                        <select name="ikan" class="form-select" aria-label="Default select example" >
-                                            <option value="0" selected>Pilih Jenis Ikan</option>
-                                            <option value="lele">Lele</option>
-                                            <option value="gurame">Gurame</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-grup m-2">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nama">
-                                    </div>
-                                    
-                                    <div class="m-2">
-                                        <button class="btn btn-success" type="submit">Search</button>
-                                    </div>
+                                        @csrf
+                                        
+                                        <div class="form-grup m-2 flex-fill">
+                                            <select name="ikan" class="form-select" aria-label="Default select example" >
+                                                <option value="0" selected>Pilih Jenis Ikan</option>
+                                                <option value="lele">Lele</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-grup m-2 flex-fill">
+                                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nama" required>
+                                        </div>
+                                        <div class="m-2 flex-fill">
+                                            <button class="btn btn-success" type="submit">Search</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -48,7 +50,8 @@ $query = session('userSession');
 
                             <div class=" m-3">
                             @foreach ($data as $konsultan)
-                                <div class="row border rounded my-3 p-2">
+                            <div onclick="window.location.href = '<?= route('home.konsultan.detail').'?no='.$konsultan->id_konsultan?>' ">
+                                <div class="konsultan-item row border rounded my-3 p-2">
                                     <div class="col-2 border rounded align-self-center" style="width: 150px; height:150px;"></div>
                                     <div class="col-8 align-self-center ">
                                         <p class="fs-5 "> {{ $konsultan->nama }} </p>
@@ -77,8 +80,9 @@ $query = session('userSession');
                                             <button class="btn btn-primary">Detail</button>
                                         </a>
                                     </div>
-                                    
+                
                                 </div>
+                            </div>
                             @endforeach
                             </div>
                         </div>

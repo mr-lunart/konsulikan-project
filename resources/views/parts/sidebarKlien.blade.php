@@ -1,37 +1,36 @@
-<div id="sidebar" class="sidebar">
+<div id="sidebar" class="sidebar" style="width: 250px;">
 
-        <div class="fs-4 mt-4 text-center"> <i><b> Konsulikan </b></i> </div>
-        <nav class="navbar p-3">
-            
-            <ul class="nav nav-underline flex-column mb-auto p-3" style="width: 250px;">
-                <li class="nav-item">
-                    <a href="<?=route('home')?>" class="nav-link" aria-current="page">
-                    Dashboard
+        <div class="fs-5 fw-bold mt-4 text-center text-white">KONSULIKAN</div>
+        <nav class="navbar my-1">
+            <ul class="nav  flex-column mb-auto flex-fill" >
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home')?>" class="nav-link text-white fw-bold">
+                    DASHBOARD
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?=route('home.profil')?>" class="nav-link">
-                    Profil
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home.profil')?>" class="nav-link text-white fw-bold">
+                    PROFIL
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?=route('home.konsultasi')?>" class="nav-link">
-                    Konsultasi
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home.konsultasi')?>" class="nav-link text-white fw-bold">
+                    KONSULTASI
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?=route('home.riwayat')?>" class="nav-link">
-                    Riwayat
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home.riwayat')?>" class="nav-link text-white fw-bold">
+                    RIWAYAT
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?=route('home.pakan')?>" class="nav-link">
-                    Panduan Pakan
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home.pakan')?>" class="nav-link text-white fw-bold">
+                    PANDUAN PAKAN
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?=route('home.panen')?>" class="nav-link">
-                    Evaluasi Panen
+                <li class="nav-item px-3 py-2">
+                    <a href="<?=route('home.panen')?>" class="nav-link text-white fw-bold">
+                    EVALUASI PANEN
                     </a>
                 </li>
             </ul>

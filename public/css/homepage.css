@@ -1,6 +1,10 @@
-.sidebox{
-    width: 280px;
+*{
+    font-family: 'Calibri';
 }
+.sidebox{
+    width: 250px;
+}
+
 .sidebar{
     position: fixed;
     height: 100%;
@@ -8,20 +12,35 @@
     top: 0;
     left: 0;
 }
+
 .navbar{
     position: sticky;
     top: 0;
     height: 100%;
 }
-.br{
+
+.br {
     width: 80%;
 }
 
-#navbar
-{
-    background-color: aqua;
+#navbar {
+    background-color:rgb(59, 122, 190);
 }
-#sidebar
-{
-    background-color: aqua;
+
+#sidebar {
+    background-color: rgb(38, 101, 168);
+}
+
+.nav-item {
+    background-color: rgba(45, 120, 201, 0.568);
+
+}
+
+.nav-item:hover {
+    background-color: rgba(35, 92, 153, 0.568);
+
+}
+
+.konsultan-item:hover{
+    box-shadow: 0px 0px 5px 1px rgba(90, 143, 161, 0.178);
 }

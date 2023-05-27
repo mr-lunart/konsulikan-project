@@ -95,22 +95,6 @@ $query = session('consultantSession');
 
 @section('footer')
     <?php
-        // if(isset($pass))
-        // {
-        //     if($pass==0)
-        //     {
-        //         echo("<script> 
-        //             alert('Password Salah');
-        //         </script>");
-        //     }
-        //     elseif($pass==1)
-        //     {
-        //         echo("<script> 
-        //             alert('Password Baru tidak Serupa');
-        //         </script>");
-        //     }
-        //     $pass=NULL;
-        // }
         $hasil = session() -> get('hasil');
         $data = session() -> get('data');
         if(isset($hasil))
@@ -128,6 +112,7 @@ $query = session('consultantSession');
                 $hasil = NULL;
                 echo("<script> 
                     alert('Update Berhasil');
+                    window.location.href = '". route('dashboard.profil') ."';
                 </script>");
                 
             }
