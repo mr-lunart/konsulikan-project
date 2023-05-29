@@ -75,8 +75,7 @@ class Konsultasi extends Controller
         return $data;
     } 
 
-    public function midtransPay()
-    {
+    public function midtransPay() {
 
         $order = $_GET['order_id'];
         $status = $_GET['transaction_status'];

@@ -67,12 +67,8 @@ $query = session('consultantSession');
                         <div class="form-grup">
                             <strong>Jenis Ikan</strong>
                             <select class="form-select" aria-label="Default select example" name="ikan" id="" required>
-                                <option value="lele"  <?php if($query[0]->ikan=='lele'){ echo(" selected");}?>>
-                                    Lele
-                                </option>
-                                <option value="gurame" <?php if($query[0]->ikan=='gurame'){ echo(" selected");}?>>
-                                    Gurame
-                                </option>
+                                <option value="1"  <?php if($query[0]->ikan=='1'){ echo(" selected");}?>> Lele </option>
+                                <option value="2"  <?php if($query[0]->ikan=='2'){ echo(" selected");}?>> Nila </option>
                             </select>
                         </div>
                         <p> </p>
@@ -102,13 +98,13 @@ $query = session('consultantSession');
             print($hasil);
             if($hasil == true)
             {
-                session('consultantSession')[0]->email = $data['email'];
-                session('consultantSession')[0]->nama = $data['nama'];
-                session('consultantSession')[0]->email = $data['email'];
-                session('consultantSession')[0]->telephone = $data['noHP'];
-                session('consultantSession')[0]->ikan = $data['ikan'];
-                session('consultantSession')[0]->tarif = $data['tarif'];
-                session('consultantSession')[0]->deskripsi = $data['deskripsi'];
+                session('consultantSession')[0]->nama = $data[0]->nama;
+                session('consultantSession')[0]->email = $data[0]->email;
+                session('consultantSession')[0]->telephone = $data[0]->telephone;
+                session('consultantSession')[0]->ikan = $data[0]->ikan;
+                session('consultantSession')[0]->jenis_ikan = $data[0]->jenis_ikan;
+                session('consultantSession')[0]->tarif = $data[0]->tarif;
+                session('consultantSession')[0]->deskripsi = $data[0]->deskripsi;
                 $hasil = NULL;
                 echo("<script> 
                     alert('Update Berhasil');

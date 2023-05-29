@@ -73,7 +73,7 @@ $query = session('consultantSession');
                             <p><?=($query[0] -> nama)?></p>
                             <p><?=($query[0] -> email)?></p>
                             <p><?=($query[0] -> telephone)?></p>
-                            <p><?=( ucfirst($query[0] -> ikan) )?></p>
+                            <p><?=( ucfirst($query[0] -> jenis_ikan) )?></p>
                             <p><?= 'IDR '.number_format(floatval($query[0] -> tarif),0,'.','.')?></p>
                             <p><?=($query[0] -> deskripsi)?></p>
                         </div>

@@ -1,9 +1,7 @@
 class PollingChat {
 
     constructor() {
-        this.idSession = document.getElementById("idSession").value;
         this.chat = document.getElementById("chat");
-        this.pengirim = document.getElementById("pengirim").value;
         this.no = 0;
         
     }
@@ -13,20 +11,24 @@ class PollingChat {
     }
 
     appendTeks(teks,nama) {
-        var text            = document.createTextNode(teks);
-        var paragraf        = document.createElement('p');
-        var strong          = document.createElement('strong');
-        strong.innerText    = nama + " : ";
-        paragraf.appendChild( strong );
-        paragraf.appendChild(text);
-        paragraf.classList.add('m-3');
+        let text        = document.createTextNode(teks);
+        let paragraf    = document.createElement('p');
+        let bold        = document.createElement('b');
+        let small       = document.createElement('small');
+        let br          = document.createElement('br');
         let div = document.createElement('div');
+        small.innerText = nama;
+        bold.appendChild(small);
+        paragraf.appendChild(text);
+        paragraf.classList.add('m-0');
+    
+        div.appendChild(bold);
         div.appendChild(paragraf);
-        div.classList.add('border')
+        div.classList.add('card','my-1','mx-3','p-2')
         this.chat.appendChild(div);
     }
 
-    pollData() 
+    pollData(url) 
     {
         const self = this;
 
@@ -38,46 +40,33 @@ class PollingChat {
 
         $.ajax ({
 
-            url: 'poll',
-            type: 'GET',
+            url: url,
+            type: 'POST',
             data: { 
-                idSesi:     self.idSession,
                 sessionNol: self.no
             },
             
             success: function(response) {
-                // let no = response[(response.length) - 1]["no"];
                
                 for (let i = 0; i < response.length ; i++) {
                     self.setMyProperty(response[i]['no']);
-                    self.appendTeks(response[i]['pesan'],response[i]['pengirim']);
+                    self.appendTeks(response[i]['pesan'],response[i]['username_pengirim']);
                 }
-                // if ( self.no < no ) {
-                //     
-                //     // 
-                //     //    
-                //     //     console.log(response[i]["no"]+' : '+response[i]["pesan"]);
-                //     // }
-                // }},
-            // complete: function() {
-            //     // Lakukan polling lagi setelah 2 detik
-            //     setInterval(function(){self.pollData}, 5000);
-            // 
             }
         });  
     }
 
-    start()
+    start(url)
     {
         this.fetchInterval = setInterval(() => {
-            this.pollData();
+            this.pollData(url);
         }, 2000);
     }
 
 }
 
 
-function pushData() {
+function pushData($url) {
     let text = $("#pesan").val()
     let idSesi = document.getElementById("idSession").value;
     let pengirim = document.getElementById("pengirim").value;
@@ -89,7 +78,7 @@ function pushData() {
     });
 
     $.ajax({
-        url : "push",
+        url : "tes",
         type : 'POST',
         data : { 
             pesan    :text,
@@ -106,7 +95,3 @@ function pushData() {
         }
     })
 };
-
-$("#chat-submit").click( function(){ pushData() } );
-let polling = new PollingChat();
-polling.start();

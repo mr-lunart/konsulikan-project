@@ -35,15 +35,25 @@ $query = session('userSession');
                         </div>
                         <div class="d-flex flex-column">
                             <p><?=($konsultan[0] -> nama)?></p>
-                            <p><?=( ucfirst($konsultan[0] -> ikan) )?></p>
+                            <p><?=( ucfirst($konsultan[0] -> jenis_ikan) )?></p>
                             <p><?= 'IDR '.number_format(floatval($konsultan[0] -> tarif),0,'.','.')?></p>
                             <p><?=($konsultan[0] -> deskripsi)?></p>
                         </div>
                     </div>
                     <hr>
                     <div>
-                        <a href="<?=route('home.pembayaran')?>"><button class="btn btn-primary">Buat Sesi</button></a>
-                        <button onclick="CancelConfirm()" class="btn btn-danger"> Cancel </button>
+                        <form action="<?=route('home.pembayaran')?>" method="GET">
+                            <input type="hidden" name="id_klien" value="<?=$query[0]->id_klien?>">
+                            <input type="hidden" name="nama_klien" value="<?=$query[0]->nama?>">
+                            <input type="hidden" name="nama_konsultan" value="<?=($konsultan[0] -> nama)?>">
+                            <input type="hidden" name="jenis_ikan" value="<?=($konsultan[0] -> jenis_ikan)?>">
+                            <input type="hidden" name="id_konsultan" value="<?=$_GET['no']?>">
+                            <input type="hidden" name="tarif" value="<?=$konsultan[0] -> tarif?>">
+                            <input type="hidden" name="ikan" value="<?=$konsultan[0] -> ikan?>">
+                            <button  class="btn btn-primary">Buat Sesi</button>
+                            <a onclick="CancelConfirm()" class="btn btn-danger"> Kembali </a>
+                        </form>
+                        
                     </div>
                 </div>
             </div>

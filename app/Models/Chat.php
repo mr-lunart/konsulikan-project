@@ -14,8 +14,8 @@ class Chat extends DB_HANDLER
         return $pesan;
     }
 
-    public static function DB_POLL($id) {
-        $data = DB::select(" SELECT * FROM `chat` WHERE ".$id);
+    public static function DB_POLL($where) {
+        $data = DB::select(" SELECT * FROM `chat` WHERE ".$where);
         return $data;
     }
 

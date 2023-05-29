@@ -31,6 +31,7 @@ class ProfilKonsultan extends Controller {
         $id = session('consultantSession')[0] -> id_konsultan;
         $data = $_POST;
         $hasil = $akun->updateDataAkunKonsultan($data,$id);
+        $data = $akun->getKonsultanData($id);
         print($hasil);
         return redirect()->route('dashboard.profil.form') 
             -> with(['data' => $data]) 

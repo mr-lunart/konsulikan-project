@@ -15,6 +15,8 @@ use App\Http\Controllers\EvaluasiPanen;
 use App\Http\Controllers\HalKonsultasi;
 use App\Http\Controllers\DetailKonsultasi;
 use App\Http\Controllers\Riwayat;
+use App\Http\Controllers\HalPembayaran;
+use App\Http\Controllers\C_Chat;
 
 // use App\Http\Controllers\Chat;
 // use App\Http\Controllers\Dashboard;
@@ -54,6 +56,9 @@ Route::get('homepage/logout', [ProfilKlien::class, 'logout']) -> name('home.logo
 Route::get('homepage/konsultasi',[HalKonsultasi::class,'setHalKonsultasi']) -> name('home.konsultasi');
 Route::get('homepage/konsultasi/detail',[DetailKonsultasi::class,'detailKonsultan']) -> name('home.konsultan.detail');
 //fixed
+Route::get('homepage/konsultasi/pembayaran',[HalPembayaran::class,'setHalPembayaran']) -> name('home.pembayaran');
+Route::post('homepage/konsultasi/pembayaran',[HalPembayaran::class,'bayar']) -> name('home.tagihan');
+//fixed
 Route::get('homepage/pakan',[PanduanPakan::class,'panduanPakan']) -> name('home.pakan');
 Route::post('homepage/pakan',[PanduanPakan::class,'sendDataIkan']) -> name('home.pakan.panduan');
 //fixed
@@ -62,6 +67,10 @@ Route::post('homepage/panen',[EvaluasiPanen::class,'hitungEP']) -> name('home.ep
 //fixed
 Route::get('homepage/riwayat',[Riwayat::class,'setRiwayat']) -> name('home.riwayat');
 Route::get('homepage/riwayat/detail',[Riwayat::class,'setRiwayatDetail']) -> name('home.riwayat.detail');
+//fixed
+Route::post('homepage/chat/client',[C_Chat::class, 'klienChat']) -> name('homepage.chat');
+Route::post('homepage/chat/client/push', [C_Chat::class, 'push']) -> name('homepage.chat.push');
+Route::post('homepage/chat/client/poll', [C_Chat::class, 'poll']) -> name('homepage.chat.poll');
 
 //Fixed
 Route::get('/consultant',[LoginKonsultan::class, 'setFormLoginKonsultan']) -> name('con.login');
@@ -90,12 +99,11 @@ Route::get('dashboard/klien',[Klien::class,'klien']) -> name('dashboard.klien');
 // Route::post('homepage/konsultan/detail', [Konsultasi::class, 'detailKonsultan']) -> name('home.konsultan.detail');
 // Route::post('homepage/konsultan/pemesanan', [Konsultasi::class, 'setkonsultan']) -> name('home.pesanan');
 // Route::post('homepage/konsultan/token', [Konsultasi::class, 'getToken']) -> name('home.token');
-// Route::any('homepage/konsultan/payment/full', [Konsultasi::class, 'midtransPay']) -> name('home.payment');
+Route::any('homepage/konsultan/payment/full', [HalPembayaran::class, 'midtransPay']) -> name('home.payment');
 // Route::get('homepage/konsultan/sesi', [Sesi::class, 'setSesi']) -> name('home.sesi');
-// Route::get('homepage/client/chat',[Chat::class, 'clientchat']) -> name('homepage.chat');
 
-// Route::post('dashboard/client/push', [ChatIO::class, 'push']);
-// Route::get('dashboard/client/poll', [ChatIO::class, 'poll']);
+
+
 // Route::post('homepage/client/push', [ChatIO::class, 'push']);
 // Route::get('homepage/client/poll', [ChatIO::class, 'poll']);
 
