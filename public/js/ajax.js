@@ -43,7 +43,7 @@ class PollingChat {
             url: url,
             type: 'POST',
             data: { 
-                sessionNol: self.no
+                iteratorPesan: self.no
             },
             
             success: function(response) {
@@ -56,6 +56,41 @@ class PollingChat {
         });  
     }
 
+    pushData(urlPush,urlPoll) {
+
+        const self = this;
+        let text = $("#pesan").val()
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        $.ajax({
+            url : urlPush,
+            type : 'POST',
+            data : { 
+                pesan    :text
+            },
+    
+            success: function(response) {
+                if(response != 0){
+                    self.pollData(urlPoll);
+                }
+                else{
+                    $("#pesan").val("Chat Telah Berakhir"); 
+                }
+                
+                
+            },
+    
+            error: function(response) {
+                console.log(response);
+            }
+        })
+    };
+
     start(url)
     {
         this.fetchInterval = setInterval(() => {
@@ -66,32 +101,3 @@ class PollingChat {
 }
 
 
-function pushData($url) {
-    let text = $("#pesan").val()
-    let idSesi = document.getElementById("idSession").value;
-    let pengirim = document.getElementById("pengirim").value;
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $.ajax({
-        url : "tes",
-        type : 'POST',
-        data : { 
-            pesan    :text,
-            id       :idSesi,
-            pengirim : pengirim
-        },
-
-        success: function(response) {
-            console.log(response);
-        },
-
-        error: function(response) {
-            console.log(response);
-        }
-    })
-};

@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginKlien;
 use App\Http\Controllers\LoginKonsultan;
 use App\Http\Controllers\ProfilKlien;
 use App\Http\Controllers\ProfilKonsultan;
-use App\Http\Controllers\Klien;
+use App\Http\Controllers\C_Klien;
 use App\Http\Controllers\PanduanPakan;
 use App\Http\Controllers\EvaluasiPanen;
 use App\Http\Controllers\HalKonsultasi;
@@ -17,6 +17,7 @@ use App\Http\Controllers\DetailKonsultasi;
 use App\Http\Controllers\Riwayat;
 use App\Http\Controllers\HalPembayaran;
 use App\Http\Controllers\C_Chat;
+use App\Http\Controllers\KlienDetail;
 
 // use App\Http\Controllers\Chat;
 // use App\Http\Controllers\Dashboard;
@@ -69,7 +70,7 @@ Route::get('homepage/riwayat',[Riwayat::class,'setRiwayat']) -> name('home.riway
 Route::get('homepage/riwayat/detail',[Riwayat::class,'setRiwayatDetail']) -> name('home.riwayat.detail');
 //fixed
 Route::post('homepage/chat/client',[C_Chat::class, 'klienChat']) -> name('homepage.chat');
-Route::post('homepage/chat/client/push', [C_Chat::class, 'push']) -> name('homepage.chat.push');
+Route::post('homepage/chat/client/push', [C_Chat::class, 'pushKlien']) -> name('homepage.chat.push');
 Route::post('homepage/chat/client/poll', [C_Chat::class, 'poll']) -> name('homepage.chat.poll');
 
 //Fixed
@@ -83,7 +84,10 @@ Route::get('dashboard/logout',[ProfilKonsultan::class, 'logout']) -> name('dashb
 Route::get('dashboard/profil/update',[ProfilKonsultan::class, 'setPerubahanFormAkun']) -> name('dashboard.profil.form');
 Route::post('dashboard/profil/update',[ProfilKonsultan::class, 'sendDataAkun']) -> name('dashboard.profil.update');
 //fixed
-Route::get('dashboard/klien',[Klien::class,'klien']) -> name('dashboard.klien');
+Route::get('dashboard/klien',[C_Klien::class,'klien']) -> name('dashboard.klien');
+Route::get('dashboard/klien/detail',[KlienDetail::class,'detailKlien']) -> name('dashboard.klien.detail');
+//fixed
+
 
 // Route::post('homepage/profil/update/password', [Profil::class, 'profilUpdatePassword']) -> name('profil.pass');
 

@@ -24,27 +24,27 @@ $urlToken = session() -> get('urlToken');
                         <strong class="fs-5 fw-bold">NOTA TRANSAKSI</strong>
                     </div>
                     <hr>
-                    <div class="d-flex flex-row justify-content-around">
-                        <div class="d-flex flex-column text-center">
-                            <small><b>Nama Konsultan</b></small>
-                            <p><?=$transaksi['nama_konsultan']?></p>
-                            <small><b>Jenis Ikan</b></small>
-                            <p><?=ucfirst($transaksi['jenis_ikan'])?></p>
-                            <small><b>Tarif Konsultasi</b></small>
-                            <p><?= 'IDR '.number_format(floatval($transaksi['tarif']),0,'.','.')?></p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column mx-5 text-start">
+                            <small><b>NAMA KONSULTAN</b></small>
+                            <small><p><?=$transaksi['nama_konsultan']?></p></small>
+                            <small><b>JENIS IKAN</b></small>
+                            <small><p><?=ucfirst($transaksi['jenis_ikan'])?></p></small>
+                            <small><b>TARIF KONSULTASI</b></small>
+                            <small><p><?= 'IDR '.number_format(floatval($transaksi['tarif']),0,'.','.')?></p></small>
                         </div>
-                        <div class="d-flex flex-column text-center">
-                            <small><b>Nama Klien</b></small>
-                            <p><?=$transaksi['nama_klien']?></p>
-                            <small><b>Metode Pembayaran</b></small>
-                            <p> BRI-ePAY (BRIMo) </p>
-                            <small><b>Total Tagihan</b></small>
-                            <p> <?= 'IDR '.number_format(floatval($transaksi['tarif']),0,'.','.')?> </p>
+                        <div class="d-flex flex-column mx-5 text-start">
+                            <small><b>NAMA KLIEN</b></small>
+                            <small><p><?=$transaksi['nama_klien']?></p></small>
+                            <small><b>METODE PEMBAYARAN</b></small>
+                            <small><p> BRI-ePAY (BRIMo) </p></small>
+                            <small><b>TOTAL TAGIHAN</b></small>
+                            <small><p> <?= 'IDR '.number_format(floatval($transaksi['tarif']),0,'.','.')?> </p></small>
                         </div>
                     </div>
                 @endif
                     <hr>
-                    <small>Catatan</small><br>
+                    <strong><small>Catatan</small></strong><br>
                     <small class="mx-3">Silahkan Kembali ke Homepage apabila telah melakukan pembayaran</small>
                     <br>
                     <hr>

@@ -30,7 +30,6 @@ $query = session('userSession');
                             <div class="col-7">
                                 <form class="d-flex" role="search" action="" method="post">
                                     @csrf
-
                                     <div class="form-grup m-2 flex-fill">
                                         <select name="ikan" class="form-select" aria-label="Default select example">
                                             <option value="0" selected>Pilih Jenis Ikan</option>
@@ -46,7 +45,7 @@ $query = session('userSession');
                                 </form>
                             </div>
                         </div>
-                        @if(isset($sesi))
+                        @if(isset($sesi) && count($sesi))
                         <hr>
                             @foreach ($sesi as $baris)
                             <div class="card">

@@ -14,7 +14,7 @@
                                 <div>
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Selamat Datang Praktisor!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Selamat Datang, Konsultan!</h1>
                                         </div>
                                         <form method="post" action=" <?php print(route('con.auth')) ?> ">
                                         @csrf    
@@ -35,9 +35,14 @@
                                         </form>
                                         <hr>
                                         <div class="">
-                                            <a class="" href="<?=route('root')?>">  
-                                                <p><strong>Bukan Konsultan? </strong>Login ke Halaman Klien</strong></p> 
-                                            </a>
+                                            <p><small>
+                                                <strong>Bukan Konsultan?</strong>
+                                                <a class="" href="<?=route('root')?>">  
+                                                    Login ke Halaman Klien
+                                                </a>
+                                                </small>
+                                            </p>
+                                            
                                         </div>
                                     </div>
                                 </div>

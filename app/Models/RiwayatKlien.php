@@ -6,7 +6,15 @@ use Illuminate\Database\QueryException;
 
 class RiwayatKlien extends DB_HANDLER {
     
-    public function joinKonsultasi(){
-    }
+    public function getRiwayat($id_klien){
 
+        $data = $this->DB_RIWAYAT_JOIN($id_klien);
+        return($data);
+    }
+    public function detailRiwayat($id_konsultasi){
+
+        $data = $this->DB_RIWAYAT_DETAIL($id_konsultasi);
+        return($data);
+    }
+    
 }

@@ -44,14 +44,19 @@
                                         </form>
                                         <hr>
                                         <div class="">
-                                            <a class="" href="<?= route('con.login') ?>">  
-                                                <p> Anda Konsultan? <strong> Masuk Sebagai Konsultan </strong></p> 
-                                            </a>
+                                            <p><small><strong>Anda Konsultan atau Ingin Menjadi Konsultan?</strong>
+                                                <a class="" href="<?= route('con.login') ?>">
+                                                    Klik Di Sini
+                                                </a>
+                                            </small></p>
                                         </div>
                                         <div class="">
-                                            <a class="" href="<?= route('setRegister') ?>"> 
-                                                <p> Belum Punya Akun? <strong> Daftar Disini</strong> </p> 
-                                            </a>
+                                            <p><small><strong>Belum Punya Akun?</strong>
+                                                <a class="" href="<?= route('setRegister') ?>">
+                                                    Daftar Di Sini
+                                                </a>
+                                            </small></p>
+                                            
                                         </div>
                                     </div>
                                 </div>

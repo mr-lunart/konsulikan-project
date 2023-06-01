@@ -29,20 +29,37 @@ class C_Chat extends Controller
         // return redirect()->route('dashboard.home');
     }
 
-    public function push() {
-        $data = $_POST['pesan'];
-        $idSesi = $_POST['id'];
-        $pengirim = $_POST['pengirim'];
-        $data_string = "0,'".$idSesi."','','".$pengirim."','".$data."',NOW()";
-        $data=Chat::DB_SEND($data_string);
-        return response($data);
+    public function push($id_konsultasi,$pesan,$pengirim,$penerima) {
+        $sesi = session('sesiChat');
+        $data_string = "0,'".$id_konsultasi."','".$penerima."','".$pengirim."','".$pesan."',NOW()";
+        $where = "`id_konsultasi` = ".$id_konsultasi.";";
+        $status = Chat::DB_STATUS($where);
+
+        if($status[0]->status_transaksi =='settlement') {
+            $data = Chat::DB_SEND($data_string);
+        }
+        else {
+            $data = 0;
+        }        
+
+        return $data;
    
+    }
+    public function pushKlien() {
+        $sesi = session('sesiChat');
+        $id_konsultasi = $sesi[0]->id_konsultasi;
+        $konsultan = $sesi[0]->nama_konsultan;
+        $klien = $sesi[0]->nama_klien;
+        $pesan = $_POST['pesan'];
+        $chat = $this -> push($id_konsultasi,$pesan,$klien,$konsultan);
+        return response($chat);
     }
 
     public function poll() {
         $sesi = session('sesiChat');
-        $no = $_POST['sessionNol'];
-        $where = "`konsultasi_id` = ".$sesi[0]->id_konsultasi." AND `no` > ".$no;
+        $no = $_POST['iteratorPesan'];
+        $id_konsultasi = $sesi[0]->id_konsultasi;
+        $where = "`konsultasi_id` = ".$id_konsultasi." AND `no` > ".$no;
         $data = Chat::DB_POLL($where);
         return response($data);
     }

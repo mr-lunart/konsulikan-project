@@ -59,6 +59,17 @@ class DB_HANDLER
         ");
         return $query;
     }
+    public static function DB_KLIEN_JOIN($id){
+        $query = DB::select("
+        SELECT klien.konsultasi_id, konsultasi.tanggal_transaksi,konsultasi.tarif_konsultasi, akun_klien.nama, jenis_ikan.jenis_ikan
+        FROM klien
+        LEFT JOIN konsultasi ON klien.konsultasi_id = konsultasi.id_konsultasi
+        LEFT JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien
+        LEFT JOIN jenis_ikan ON konsultasi.jenis_ikan_id = jenis_ikan.id_jenis_ikan
+        WHERE konsultasi.konsultan_id = ".$id.";
+        ");
+        return $query;
+    }
     public static function DB_RIWAYAT_DETAIl($id)
     {
         $query = DB::select("
@@ -66,6 +77,18 @@ class DB_HANDLER
         FROM riwayat
         LEFT JOIN konsultasi ON riwayat.konsultasi_id = konsultasi.id_konsultasi
         LEFT JOIN akun_konsultan ON konsultasi.konsultan_id = akun_konsultan.id_konsultan
+        LEFT JOIN jenis_ikan ON konsultasi.jenis_ikan_id = jenis_ikan.id_jenis_ikan
+        WHERE konsultasi.id_konsultasi = ".$id.";
+        ");
+        return $query;
+    }
+    public static function DB_KLIEN_DETAIl($id)
+    {
+        $query = DB::select("
+        SELECT klien.konsultasi_id, konsultasi.tanggal_transaksi,konsultasi.tarif_konsultasi, akun_klien.nama, jenis_ikan.jenis_ikan
+        FROM klien
+        LEFT JOIN konsultasi ON klien.konsultasi_id = konsultasi.id_konsultasi
+        LEFT JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien
         LEFT JOIN jenis_ikan ON konsultasi.jenis_ikan_id = jenis_ikan.id_jenis_ikan
         WHERE konsultasi.id_konsultasi = ".$id.";
         ");

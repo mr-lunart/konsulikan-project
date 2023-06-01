@@ -19,6 +19,11 @@ class Chat extends DB_HANDLER
         return $data;
     }
 
+    public static function DB_STATUS($where) {
+        $data = DB::select("SELECT `status_transaksi` FROM konsultasi WHERE ".$where);
+        return $data;
+    }
+
     public function listChat($id){
         $data = DB::select("SELECT * FROM `chat` WHERE konsultasi_id=".$id);
         return $data;

@@ -1,48 +1,14 @@
 <?php
 $query = session('consultantSession');
 ?>
-@extends('layouts.app')
+@extends('layouts.appKonsultan')
 
 @section('sidebar')
-    <div class="sidebar bg-dark text-white ">
-        <br>
-        <div class="fs-4 text-center"> <i><b> Konsulikan </b></i> </div>
-        <hr>
-        <nav class="navbar p-3">
-            <ul class="nav nav-pills flex-column mb-auto" style="width: 250px;">
-                <li class="nav-item ">
-                    <a href="<?=route('dashboard')?>" class="nav-link active" aria-current="page">
-                    Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="<?=route('dashboard.profil')?>" class="nav-link link-dark text-white">
-                    Profil
-                    </a>
-                </li>
-                <li>
-                <a href="#" class="nav-link link-dark text-white">
-                    Chat
-                    </a>
-                </li>
-                <li>
-                    <a href="<?=route('dashboard.klien')?>" class="nav-link link-dark text-white">
-                    Klien
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    @include('parts.sidebarKonsultan')
 @endsection
 
 @section('navbar')
-    <div class="bg-dark text-white">
-        <ul class="nav justify-content-end ">
-            <li class="nav-item">
-                <h6 class="sf-4 m-3">Selamat Datang, <b><?= $query[0] -> nama ?></b></h6>
-            </li>
-        </ul>
-    </div>
+    @include('parts.navbarKonsultan')
 @endsection
 
 @section('content')

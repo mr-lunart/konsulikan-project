@@ -18,13 +18,9 @@ $sesi = session('sesiChat');
     <div class="card my-3">
         <div class="border">
             <div class="m-3">
-                ROOM CHAT <b>{{$sesi[0]->id_pemesanan}}</b>
+                ROOM CHAT
             </div>
         </div>
-        
-            
-        
-        
     </div>
     <div id="chat" class="overflow-auto">
     </div>
@@ -46,7 +42,13 @@ $sesi = session('sesiChat');
     <script>
         const push = '<?=route('homepage.chat.push')?>';
         const poll = '<?=route('homepage.chat.poll')?>';
-        // $("#chat-submit").click( function(){ pushData(push) } );
-        new PollingChat().start(poll);
+        
+        const chat = new PollingChat()
+        chat.start(poll);
+        $("#chat-submit").click( 
+            function(){ 
+                chat.pushData(push,poll) 
+            } 
+            );
     </script>
 @endsection

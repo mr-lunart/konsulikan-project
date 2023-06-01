@@ -12,6 +12,7 @@ class Konsultasi extends DB_HANDLER {
         "data2" => "`id_konsultasi`, `klien_id`, `jenis_ikan_id`, `id_pemesanan`, `status_transaksi`",
         "data3" => "`id_konsultasi`, `klien_id`, `jenis_ikan_id`,",
         "data4" => "`id_konsultasi`,`klien_id`, `konsultan_id`, akun_klien.`nama` as 'nama_klien', akun_konsultan.`nama` as 'nama_konsultan', `id_pemesanan`,`status_transaksi`",
+        "data4" => "`id_konsultasi`,`klien_id`, `konsultan_id`, akun_klien.`nama` as 'nama_klien', akun_konsultan.`nama` as 'nama_konsultan',`status_transaksi`",
     ];
     
     public function setKonsultasi($id_klien,$id_jenis_ikan,$id_konsultan,$tarif){
@@ -32,18 +33,15 @@ class Konsultasi extends DB_HANDLER {
         return $id_konsultasi[0]->id_konsultasi.$id_pesanan;
     }
 
-    public function getRiwayat($id_klien){
-
-        $data = $this->DB_RIWAYAT_JOIN($id_klien);
-        return($data);
-    }
-    public function detailRiwayat($id_konsultasi){
-
-        $data = $this->DB_RIWAYAT_DETAIL($id_konsultasi);
-        return($data);
-    }
-
     public function getKonsultasi($id){
+        $config = $this -> database;
+        $join = "JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien JOIN akun_konsultan ON konsultasi.konsultan_id = akun_konsultan.id_konsultan";
+        $where = "klien_id = ".$id."  AND status_transaksi = 'settlement'";
+        $data = $this -> DB_JOIN($config['tabel'],$config['data4'],$join,$where);
+        return $data;
+    }
+
+    public function getKlienKonsultasi($id){
         $config = $this -> database;
         $join = "JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien JOIN akun_konsultan ON konsultasi.konsultan_id = akun_konsultan.id_konsultan";
         $where = "klien_id = ".$id."  AND status_transaksi = 'settlement'";
