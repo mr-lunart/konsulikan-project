@@ -1,16 +1,10 @@
 *{
-    font-family: 'Calibri';
-}
-.sidebox{
-    width: 250px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.sidebar{
-    position: fixed;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
 }
 
 .navbar{
@@ -19,25 +13,16 @@
     height: 100%;
 }
 
-.br {
-    width: 80%;
-}
-
-#navbar {
-    background-color:rgb(59, 122, 190);
-}
-
-#sidebar {
-    background-color: rgb(38, 101, 168);
-}
-
 .nav-item {
-    background-color: rgba(45, 120, 201, 0.568);
 
+    color: #05338D ;
+    font-weight: 400;
+    font-size: 10pt;
 }
 
 .nav-item:hover {
-    background-color: rgba(35, 92, 153, 0.568);
+    color: #05338D ;
+    font-weight: 600;
 
 }
 

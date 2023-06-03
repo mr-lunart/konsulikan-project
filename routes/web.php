@@ -18,6 +18,8 @@ use App\Http\Controllers\Riwayat;
 use App\Http\Controllers\HalPembayaran;
 use App\Http\Controllers\C_Chat;
 use App\Http\Controllers\KlienDetail;
+use App\Http\Controllers\SesiChatKlien;
+use App\Http\Controllers\SesiChatKonsultan;
 
 // use App\Http\Controllers\Chat;
 // use App\Http\Controllers\Dashboard;
@@ -69,9 +71,9 @@ Route::post('homepage/panen',[EvaluasiPanen::class,'hitungEP']) -> name('home.ep
 Route::get('homepage/riwayat',[Riwayat::class,'setRiwayat']) -> name('home.riwayat');
 Route::get('homepage/riwayat/detail',[Riwayat::class,'setRiwayatDetail']) -> name('home.riwayat.detail');
 //fixed
-Route::post('homepage/chat/client',[C_Chat::class, 'klienChat']) -> name('homepage.chat');
-Route::post('homepage/chat/client/push', [C_Chat::class, 'pushKlien']) -> name('homepage.chat.push');
-Route::post('homepage/chat/client/poll', [C_Chat::class, 'poll']) -> name('homepage.chat.poll');
+Route::post('homepage/chat/client',[SesiChatKlien::class, 'klienChat']) -> name('homepage.chat');
+Route::post('homepage/chat/client/push', [SesiChatKlien::class, 'pushKlien']) -> name('homepage.chat.push');
+Route::post('homepage/chat/client/poll', [SesiChatKlien::class, 'poll']) -> name('homepage.chat.poll');
 
 //Fixed
 Route::get('/consultant',[LoginKonsultan::class, 'setFormLoginKonsultan']) -> name('con.login');
@@ -87,7 +89,10 @@ Route::post('dashboard/profil/update',[ProfilKonsultan::class, 'sendDataAkun']) 
 Route::get('dashboard/klien',[C_Klien::class,'klien']) -> name('dashboard.klien');
 Route::get('dashboard/klien/detail',[KlienDetail::class,'detailKlien']) -> name('dashboard.klien.detail');
 //fixed
-
+Route::get('dashboard/klien/chat',[C_Chat::class, 'setDataChat']) -> name('dashboard.chat');
+Route::post('dashboard/klien/chat/sesi',[SesiChatKonsultan::class, 'konsultanChat']) -> name('dashboard.chat.sesi');
+Route::post('dashboard/klien/chat/push',[SesiChatKonsultan::class, 'pushKonsultan']) -> name('dashboard.chat.push');
+Route::post('dashboard/klien/chat/poll',[SesiChatKonsultan::class, 'poll']) -> name('dashboard.chat.poll');
 
 // Route::post('homepage/profil/update/password', [Profil::class, 'profilUpdatePassword']) -> name('profil.pass');
 

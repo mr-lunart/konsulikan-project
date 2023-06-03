@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="nav-item px-3 py-2">
-                    <a href="<?=route('dashboard.klien')?>" class="nav-link text-white fw-bold">
+                    <a href="<?=route('dashboard.chat')?>" class="nav-link text-white fw-bold">
                     CHAT
                     </a>
                 </li>

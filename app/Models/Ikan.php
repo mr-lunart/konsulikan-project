@@ -6,9 +6,9 @@ class Ikan extends DB_HANDLER {
 
     protected $database = [
         "tabel" => "`ikan`",
-        "data" => "`id_panduan`,`jenis_ikan_id`,`umur_ikan`,`klien_id`,`tanggal`",
-        "data3" => "`id_panduan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
-        "data2" => "`id_panduan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
+        "data" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`klien_id`,`tanggal`",
+        "data3" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
+        "data2" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
     ];
 
     public function getDataIkan($id){

@@ -33,7 +33,13 @@ class HalPembayaran extends Controller
 
     public static function updateStatusKonsultan($post) {
         $konsultan = new DataAkunKonsultan();
-        $query = $konsultan -> updateStatusKonsultan($post['id_konsultan']);
+        $query = $konsultan -> updateStatusKonsultan($post);
+        return $query;
+    }
+
+    public static function updateStatusPembayaran($id_pesanan) {
+        $konsultasi = new Konsultasi;
+        $query = $konsultasi -> updateStatusTransaksi($id_pesanan);
         return $query;
     }
 
@@ -47,6 +53,7 @@ class HalPembayaran extends Controller
             echo("Transaksi Berhasi!! : ");
             print("Silahkan Menutup Window Ini dan Kembali ke Website Utama");
             $updateKonsultan =  $this -> updateStatusKonsultan($payment['id_konsultan']);
+            $updatepesanan = $this -> updateStatusPembayaran($order);
         }
 
         elseif ($status=="deny")
