@@ -13,38 +13,44 @@ $sesi = session('sesiChat');
 @endsection
 
 @section('content')
-<meta name="csrf-token" content="<?php echo(csrf_token()) ?> ">
+<meta name="csrf-token" content="<?php echo (csrf_token()) ?> ">
 <div class="container">
     <div class="card my-3">
         <div class="border">
             <div class="m-3">
-                ROOM CHAT
+                <div class="d-flex justify-content-between">
+                    <b>SESI CHAT</b>
+                    <div class="d-flex">
+                        <b> </b>
+                        <i class="fa-solid fa-circle-user fs-3 mx-3" style="color: #2963c7;"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div id="chat" class="overflow-auto">
     </div>
-    
+
 </div>
-    <div class="input-group">
-                <input id="pesan" class="form-control rounded-0" placeholder="..." name="pesan">
-                <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> Send </button>
-    </div>
-    
+<div class="input-group">
+    <input id="pesan" class="form-control rounded-0" placeholder="..." name="pesan">
+    <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> Send </button>
+</div>
+
 @endsection
 
 @section('footer')
-    <script type="text/javascript"  src="<?= asset('js/ajax.js') ?>" ></script>
-    <script>
-        const push = '<?=route('homepage.chat.push')?>';
-        const poll = '<?=route('homepage.chat.poll')?>';
-        
-        const chat = new PollingChat()
-        chat.start(poll);
-        $("#chat-submit").click( 
-            function(){ 
-                chat.pushData(push,poll) 
-            } 
-            );
-    </script>
+<script type="text/javascript" src="<?= asset('js/ajax.js') ?>"></script>
+<script>
+    const push = '<?= route('homepage.chat.push') ?>';
+    const poll = '<?= route('homepage.chat.poll') ?>';
+
+    const chat = new PollingChat()
+    chat.start(poll);
+    $("#chat-submit").click(
+        function() {
+            chat.pushData(push, poll)
+        }
+    );
+</script>
 @endsection

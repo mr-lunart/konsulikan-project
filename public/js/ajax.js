@@ -24,7 +24,7 @@ class PollingChat {
     
         div.appendChild(bold);
         div.appendChild(paragraf);
-        div.classList.add('card','my-1','mx-3','p-2')
+        div.classList.add('card','my-3','mx-0','p-2')
         this.chat.appendChild(div);
     }
 

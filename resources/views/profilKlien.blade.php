@@ -32,6 +32,9 @@ $query = session('userSession');
                         <a class="btn btn-primary" href="<?= route('profil.form') ?>">
                             <i class="fa-solid fa-user-pen" style="color: #ffffff;"><span> Edit</span></i>
                         </a>
+                        <a class="btn btn-primary" href="<?= route('profil.form') ?>">
+                            <span> Ubah Password </span>
+                        </a>
                         <button onclick="logoutConfirm()" class="btn btn-danger">
                             <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"><span> Logout</span></i>
                         </button>

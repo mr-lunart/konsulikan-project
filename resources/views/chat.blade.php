@@ -1,14 +1,14 @@
 <?php
 $query = session('consultantSession');
 ?>
-@extends('layouts.app')
+@extends('layouts.appKonsultan')
 
 @section('sidebar')
-    @include('parts.sidebarKonsultan')
+@include('parts.sidebarKonsultan')
 @endsection
 
 @section('navbar')
-    @include('parts.navbarKonsultan')
+@include('parts.navbarKonsultan')
 @endsection
 
 @section('content')
@@ -28,32 +28,32 @@ $query = session('consultantSession');
                         </div>
                         <hr>
                         @if(isset($sesi) && count($sesi))
-                        
-                            @foreach ($sesi as $baris)
-                            <div class="card">
-                                <div class="m-3">
-                                    <div class="d-flex flex-row">
-                                        <div class="flex-fill m-auto">
-                                            <b>SESI CHAT</b>
-                                        </div>
-                                        <div class="flex-fill m-auto text-center">
-                                            <small>Konsultan</small>
-                                            <p>{{$baris->nama_konsultan}}</p>
-                                        </div>
-                                        <div class="flex-fill m-auto text-center">
-                                            <small>Klien</small>
-                                            <p>{{$baris->nama_klien}}</p>
-                                        </div>
-                                        <div class="flex-fill m-auto text-center">
-                                            <form action="<?=route('dashboard.chat.sesi')?>" method="post">
+
+                        @foreach ($sesi as $baris)
+                        <div class="card">
+                            <div class="m-3">
+                                <div class="d-flex flex-row">
+                                    <div class="flex-fill m-auto">
+                                        <b>SESI CHAT</b>
+                                    </div>
+                                    <div class="flex-fill m-auto text-center">
+                                        <small>Konsultan</small>
+                                        <p>{{$baris->nama_konsultan}}</p>
+                                    </div>
+                                    <div class="flex-fill m-auto text-center">
+                                        <small>Klien</small>
+                                        <p>{{$baris->nama_klien}}</p>
+                                    </div>
+                                    <div class="flex-fill m-auto text-center">
+                                        <form action="<?= route('dashboard.chat.sesi') ?>" method="post">
                                             @csrf
-                                                <button class="btn btn-primary px-4 fs-5">Chat</button>
-                                            </form>
-                                        </div>
+                                            <button class="btn btn-primary px-4 fs-5">Chat</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                        </div>
+                        @endforeach
                         @endif
                     </div>
                 </div>

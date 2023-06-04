@@ -42,7 +42,8 @@ use App\Http\Controllers\SesiChatKonsultan;
 |
 */
 //Fixed
-Route::get('/', function(){ return redirect('/client'); }) -> name('root');
+Route::get('/', function(){ return redirect('/front'); }) -> name('root');
+Route::get('/front', [LoginKlien::class,'front']) ->name('front');
 Route::get('/client', [LoginKlien::class,'clientForm']) -> name('login');
 Route::post('/login', [LoginKlien::class,'login']) -> name('login.auth');
 //Fixed

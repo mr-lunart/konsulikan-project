@@ -3,10 +3,6 @@ $query = session('userSession');
 ?>
 @extends('layouts.app')
 
-@section('sidebar')
-    @include('parts.sidebarKlien')
-@endsection
-
 @section('navbar')
     @include('parts.navbar')
 @endsection
@@ -22,7 +18,7 @@ $query = session('userSession');
                     <div class=" m-3">
                     @foreach ($riwayat as $list)
                         <div class="border rounded mb-3 row">
-                            <div class="col m-3">
+                            <div class="m-3">
                                 <strong> </strong>
                                 <p><strong>Konsultan</strong> : {{$list->nama}}</p>
                                 <p><strong>Tarif</strong> : {{$list->tarif_konsultasi}}</p>

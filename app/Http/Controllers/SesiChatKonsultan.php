@@ -14,9 +14,9 @@ class SesiChatKonsultan extends Controller
     }
     
     public function konsultanChat() {
-        $id_klien = session('consultantSession')[0]->id_konsultan;
+        $id_konsultan = session('consultantSession')[0]->id_konsultan;
         $konsultasi = new Konsultasi();
-        $sesi = $konsultasi -> getKonsultasiKonsultan($id_klien);
+        $sesi = $konsultasi -> getKonsultasiKonsultan($id_konsultan);
         Session::put('sesiChat', $sesi);
         Session::save();
         return view('sesiChatKonsultan');

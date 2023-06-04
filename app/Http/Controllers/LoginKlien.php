@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Session;
 
 class LoginKlien extends Controller
 {
+    public function front() {
+        return view ('frontpage');
+    }
+
     public function clientForm() {
         return view('loginKlien');
     }

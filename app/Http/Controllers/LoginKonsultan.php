@@ -39,7 +39,7 @@ class LoginKonsultan extends Controller
         }
 
         $status = true;
-        // return redirect() -> route('con.login') -> with( ['status' => $status] );  
+        return redirect() -> route('con.login') -> with( ['status' => $status] );  
          
     }
 }

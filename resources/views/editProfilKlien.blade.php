@@ -57,8 +57,7 @@ if(isset($hasil))
                         <p> </p>
                         <hr>
                         <div>
-                            <button id="profilSubmit" class="btn btn-primary">Simpan Profil</button>
-                            <a onclick="window.location.replace('<?=route('home.profil')?>')" class="btn btn-danger"> Cancel </a>
+                            <button id="profilSubmit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -137,7 +136,7 @@ if(isset($hasil))
             },
             submitHandler: function(form) {
             // Tindakan yang akan dijalankan setelah validasi berhasil
-                submitConfirm(form);
+                form.submit();
             }
         });
     }

@@ -47,6 +47,7 @@ $query = session('consultantSession');
                     <hr>
                     <div>
                         <a href="<?=route('dashboard.profil.form')?>"><button class="btn btn-primary">Edit</button></a>
+                        <a href="<?=route('dashboard.profil.form')?>"><button class="btn btn-primary">Ubah Password</button></a>
                         <button onclick="logoutConfirm()" class="btn btn-danger"> Logout </button>
                     </div>
                 </div>

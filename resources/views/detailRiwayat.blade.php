@@ -3,10 +3,6 @@ $query = session('userSession');
 ?>
 @extends('layouts.app')
 
-@section('sidebar')
-    @include('parts.sidebarKlien')
-@endsection
-
 @section('navbar')
     @include('parts.navbar')
 @endsection

@@ -13,7 +13,7 @@ class M_PanduanPakan extends DB_HANDLER {
 
     public function getDataPanduan($umur,$ikan){
         $config = $this -> database;
-        $where = "panduan_pakan.`id_jenis_ikan` = ".$ikan." AND `batas_bawah` >= ".$umur." OR `batas_atas` >= ".$umur;
+        $where = "panduan_pakan.`id_jenis_ikan` = ".$ikan." AND (`batas_bawah` >= ".$umur." OR `batas_atas` >= ".$umur.")";
         $join = " LEFT JOIN `jenis_ikan` ON panduan_pakan.id_jenis_ikan = jenis_ikan.id_jenis_ikan ";
         $data = $this -> DB_JOIN( $config['tabel'] , $config['data3'],$join, $where);
         return $data;
