@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataAkunKlien;
+use Illuminate\Database\QueryException;
 
 use Illuminate\Support\Facades\Session;
 
@@ -18,6 +19,40 @@ class ProfilKlien extends Controller
     public function setPerubahanFormAkun() {
         return view('editProfilKlien');
     }
+    public function setUbahFormPassword() {
+        return view('editPasswordKlien');
+    }
+    
+    public function ubahPassword() {
+        $post = $_POST;
+        $pass = $post['passBaru'];
+        $akun = new DataAkunKlien();
+        $id = session('userSession')[0] -> id_klien;
+        try {
+            $query = $akun->getPassword( $id );
+            if( count( $query ) > 0 ) {
+
+                if ($post["passLama"] == $query[0]->pass) {
+                    $update = $akun -> updatePassword( $id, $pass );
+                    var_dump($update);
+                    $status = true;
+                    return redirect() -> route('home.password') -> with( ['status' => $status] );  
+                }
+                else {
+
+                }
+            }
+        }
+
+        catch( QueryException $e ){
+            $query = $e;
+        }
+
+        $status = false;
+        return redirect() -> route('home.password') -> with( ['status' => $status] );  
+         
+    }
+
     public function simpan() {
         $akun = new DataAkunKlien();
         $nama = $_POST['nama'];
@@ -34,7 +69,7 @@ class ProfilKlien extends Controller
     public function logout() {
         Session::flush();
         Session::save();
-        header("Location:".route('login'));
+        header("Location:".route('front'));
         exit();
     }
     // public function daftar(){

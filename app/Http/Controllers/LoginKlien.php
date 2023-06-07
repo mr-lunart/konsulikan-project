@@ -14,13 +14,22 @@ class LoginKlien extends Controller
     }
 
     public function clientForm() {
-        return view('loginKlien');
+        $session = session('userSession');
+
+        if( isset($session) ) {
+            return redirect() -> route('home');
+        }
+        elseif( isset($session)  == false ) {
+            
+            return view('loginKlien');
+        }
+        
     }
     public function login() {
         $user = $_POST['user'];
         $pass = $_POST['pass'];
         $autentikasi = new DataAkunKlien();
-        
+
         try {
             $query = $autentikasi->getDataAkunKlien( $user );
             if( count( $query ) > 0 ) {

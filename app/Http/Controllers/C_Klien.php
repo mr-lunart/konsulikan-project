@@ -10,7 +10,8 @@ class C_Klien extends Controller
         $akun = session('consultantSession')[0]->id_konsultan;
         $konsultasi = new Klien;
         $data = $konsultasi -> getKlien($akun);
-        return view('klien',['riwayat'=>$data]);
+        $pendapatan = $konsultasi -> getPendapatan($akun);
+        return view('klien',['riwayat'=>$data,'pendapatan'=>$pendapatan]);
     }
 }
 ?>

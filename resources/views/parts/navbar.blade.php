@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="d-flex flex-row justify-content-center m-3">
-        <img class="me-auto" src="{{ asset('image/konsulikan-logo.svg') }}" alt="">
-        <ul class="nav">
+    <div class="d-flex flex-fill justify-content-between m-3">
+        <img class="m-0" src="{{ asset('image/konsulikan-logo.webp') }}" alt="">
+        <ul class="nav m-0 p-0">
             <li class=" nav-item">
                 <a href="<?=route('home')?>" class="nav-link">
                     Dashboard
@@ -33,10 +33,10 @@
                 </a>
             </li>
         </ul>
-        <div class="">
+        <div class="m-0 p-0">
             <span class="d-flex align-items-center">
-                <i class="fa-solid fa-circle-user fs-3 mx-3" style="color: #2963c7;"></i>
-                <b> <?= $query[0] -> nama ?> </b>
+                <i class="fa-solid fa-circle-user fs-3 me-2" style="color: #2963c7;"></i>
+                <small><b> <?= $query[0] -> nama ?> </b></small>
             </span>
             
         </div>

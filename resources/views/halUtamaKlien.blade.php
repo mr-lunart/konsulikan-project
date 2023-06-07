@@ -1,34 +1,5 @@
 <?php
-function hitungEP($row){
-    $tambah = $row->{'Bobot Ikan Panen'} + $row->{'Bobot Ikan Mati'};
-    $atas = $tambah - $row ->{'Bobot Ikan Awal'};
-    $bawah = $atas / $row->{'Bobot Pakan'};
-    return round($bawah * 100);
-}
-
 $query = session('userSession');
-$formatHead = "";
-$formatData = "";
-if (isset($data) && count($data) > 0 ){
-    foreach($data as $row) {
-        $percent = hitungEP($row);
-        $name = "'".$row->{'Nama Kegiatan'}."'";
-
-        // Formating data agar menjadi struktur array dalam format string
-        $formatHead = $formatHead.$name.",";
-        $formatData = $formatData.$percent.",";
-    }
-    // menambahkan value seratus sebagai default value
-    $formatData = $formatData."100";
-
-    $formatHead = trim($formatHead,',');
-    $headBar = "[".$formatHead."]";
-    $dataBar = "[".$formatData."]";
-}
-else {
-    $headBar = "";
-    $dataBar = "";
-}
 ?>
 
 @extends('layouts.app')
@@ -36,52 +7,58 @@ else {
 
 
 @section('navbar')
-    @include('parts.navbar')
+@include('parts.navbar')
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="m-3">
-            <div class="card">
-                <div class="row m-3">
-                    <div class="col">
-                       <b> PANDUAN PAKAN </b>
-                    </div>
-                </div>
+<div class="curved-background">
+
+    <div class="curved-background__curved d-flex flex-column justify-content-center ">
+        <div class="text-white text-center">
+            <h1 class="fw-bolder">Konsultasikan Pada Pakarnya</h1>
+            <h5 class="fw-normal fs-6"><b>Konsulikan</b> platfform yang menyediakan layanan konsultasi dengan pakar ikan</h5>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <h2 class="blue-tagline text-center fw-bolder fs-2">Fitur Kami</h2>
+
+</div>
+<br>
+<div class="container">
+
+    <div class="d-flex flex-column border bg-white p-5 rounded">
+        <div class="d-flex flex-row  align-items-center justify-content-between">
+            <img class="m-3" src="{{ asset('image/ilustrasi-2.webp') }}" alt="">
+            <div>
+                <h1 class="blue-tagline  fw-bolder">Konsultasi</h1>
+                <h5 class="paraf-blue fw-normal fs-5">Konsultasikan permasalah budidaya ikan anda dengan pakar terpercayara</h5>
             </div>
-            <br>
-            <div class="card">
-                <div class="chart-bar">
-                    <canvas class="m-3" id="myChart"></canvas>
-                </div>
+        </div>
+        <br>
+        <div class="d-flex flex-row  align-items-center justify-content-between">
+            <div>
+                <h1 class="blue-tagline  fw-bolder">Panduan Pakan</h1>
+                <h5 class="paraf-blue fw-normal fs-5">Hitung keperluan pakan ikan budidaya Anda melalui fitur Panduan Pakan</h5>
+            </div>
+            <img class="m-3" src="{{ asset('image/ilustrasi-1.webp') }}" alt="">
+        </div>
+        <br>
+        <div class="d-flex flex-row  align-items-center justify-content-between">
+            <img class="m-3" src="{{ asset('image/ilustrasi-3.webp') }}" alt="">
+            <div>
+                <h1 class="blue-tagline fw-bolder">Evaluasi Hasil Panen</h1>
+                <h5 class="paraf-blue fw-normal fs-5">Lakukan pencatatan dan evaluasi hasil panen ikan budidaya anda melalui fitur Evaluasi Panen</h5>
             </div>
         </div>
     </div>
+</div>
+<br>
+<br>
 @endsection
 
 @section('footer')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
-    <script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?=$headBar?>,
-            datasets: [{
-                label: 'Efisiensi Pakan dalam Persen ',
-                data: <?=$dataBar?>,
-                borderWidth: 1
-            }]
-        },
-        options: {
-        scales: {
-            y: {
-            beginAtZero: true
-            }
-        }
-        }
-    });
-    </script>
-    <!-- <script type="text/javascript" src="{{ asset('js/chart-bar-demo.js') }}"></script> -->
 @endsection

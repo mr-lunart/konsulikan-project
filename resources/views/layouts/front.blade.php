@@ -17,9 +17,10 @@
     @yield('main')
 
     @yield('auth')
-    
+
+    <script type="text/javascript" src="<?= asset('js/jquery.js') ?>" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js" crossorigin="anonymous"></script>
     @yield('footer')
-    
 </body>
 
 </html>

@@ -10,7 +10,47 @@ class EvaluasiPanen extends Controller
         $id = session('userSession')[0]->id_klien;
         $hasilPanen = new HasilPanen();
         $data = $hasilPanen->getDataHasilPanen($id);
-        return view('evaluasiPanen',['data' => $data]);
+        $kolom = $hasilPanen->getKolom($id);
+        $ep = [];
+        foreach ($data as $row){
+            $percent = $this->RumusEP($row);
+            array_push($ep,$percent);
+        }
+        return view('evaluasiPanen',['ep'=>$ep,'display'=>$kolom]);
+    }
+
+    public function RumusEP($row)
+    {
+        $tambah = $row->{'Bobot Ikan Panen'} + $row->{'Bobot Ikan Mati'};
+        $atas = $tambah - $row->{'Bobot Ikan Awal'};
+        $bawah = $atas / $row->{'Bobot Pakan'};
+        return round($bawah * 100);
+    }
+
+    public function detailEvaluasiPanen() {
+        $id = $_GET['id_hasilPanen'];
+        $hasilPanen = new HasilPanen();
+        $data = $hasilPanen->getHasilPanen($id);
+        return view('detailEvaluasiPanen',['data' => $data[0]]);
+    }
+
+    public function tambahEvaluasiPanen() {
+        return view('tambahEvaluasiPanen');
+    }
+
+    public function editEvaluasiPanen() {
+        $id = $_GET['id_hasilPanen'];
+        $hasilPanen = new HasilPanen();
+        $data = $hasilPanen->getHasilPanen($id);
+        return view('editEvaluasiPanen',['data' => $data[0]]);
+    }
+
+    public function updateEvaluasiPanen() {
+        $post = $_POST;
+        $hasilPanen = new HasilPanen();
+        $data = $hasilPanen->updateDataHasilPanen($post);
+        echo($data);
+        // return redirect() -> route('home.panen.edit') -> with( ['status' => true] );  
     }
 
     public function hitungEP() {

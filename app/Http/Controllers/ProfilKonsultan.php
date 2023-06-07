@@ -21,7 +21,7 @@ class ProfilKonsultan extends Controller {
     public function logout() {
         Session::flush();
         Session::save();
-        header("Location:".route('con.login'));
+        header("Location:".route('front'));
         exit();
     }
 
@@ -36,6 +36,38 @@ class ProfilKonsultan extends Controller {
         return redirect()->route('dashboard.profil.form') 
             -> with(['data' => $data]) 
             -> with(['hasil' => $hasil]);
+    }
+    public function setUbahFormPassword() {
+        return view('editPasswordKonsultan');
+    }
+    public function ubahPassword() {
+        $post = $_POST;
+        $pass = $post['passBaru'];
+        $akun = new DataAkunKonsultan();
+        $id = session('consultantSession')[0] -> id_konsultan;
+        try {
+            $query = $akun->getPassword( $id );
+            if( count( $query ) > 0 ) {
+
+                if ($post["passLama"] == $query[0]->pass) {
+                    $update = $akun -> updatePassword( $id, $pass );
+                    var_dump($update);
+                    $status = true;
+                    return redirect() -> route('dashboard.password') -> with( ['status' => $status] );  
+                }
+                else {
+
+                }
+            }
+        }
+
+        catch( QueryException $e ){
+            $query = $e;
+        }
+
+        $status = false;
+        return redirect() -> route('dashboard.password') -> with( ['status' => $status] );  
+         
     }
 }
 

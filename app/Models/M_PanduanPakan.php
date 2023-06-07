@@ -8,7 +8,7 @@ class M_PanduanPakan extends DB_HANDLER {
         "tabel" => "`panduan_pakan`",
         "data" => "`id_panduan`, `id_jenis_ikan`, `batas_umur`, `umur`, `berat_ikan`, `panjang`, `jenis_pakan`, `ukuran_pakan`, `frekuensi`, `dosis_pakan`",
         "data2" => "`id_jenis_ikan`, `batas_bawah`, `batas_atas`, `umur`, `berat_ikan`, `panjang`, `jenis_pakan`, `ukuran_pakan`, `frekuensi`, `dosis_pakan`",
-        "data3" => "jenis_ikan.`jenis_ikan` as 'Jenis Ikan', `umur` as 'Umur', `berat_ikan` as 'Berat Ikan', `panjang` as 'Panjang', `jenis_pakan` as 'Jenis Pakan', `ukuran_pakan` as 'Ukuran Pakan', `frekuensi` as 'Frekuensi', `dosis_pakan` as 'Dosis Pakan' "
+        "data3" => "jenis_ikan.`jenis_ikan` as 'Jenis Ikan', `umur` as 'Umur', `berat_ikan` as 'Berat Ikan (gr/ekor)', `panjang` as 'Panjang (cm)', `jenis_pakan` as 'Jenis Pakan', `ukuran_pakan` as 'Ukuran Pakan (mm)', `frekuensi` as 'Frekuensi', `dosis_pakan` as 'Dosis Pakan' "
     ];
 
     public function getDataPanduan($umur,$ikan){

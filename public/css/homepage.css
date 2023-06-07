@@ -9,8 +9,17 @@
 
 .navbar{
     position: sticky;
+    z-index: 1;
     top: 0;
     height: 100%;
+    box-shadow: 0px 2px 6px rgba(0, 4, 36, 0.384);
+}
+#pesanBox{
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -2px 6px rgba(0, 4, 36, 0.384);
 }
 
 .nav-item {
@@ -28,4 +37,29 @@
 
 .konsultan-item:hover{
     box-shadow: 0px 0px 5px 1px rgba(90, 143, 161, 0.178);
+}
+
+.curved-background__curved {
+    /* Background color */
+    background-color: #05338D;
+    /* You can use gradient background color such as */
+    /* background: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%); */
+
+    /* Curved corners */
+    border-bottom-left-radius: 50% 45%;
+    border-bottom-right-radius: 50% 45%;
+
+    /* Size */
+    height: 400px;
+    width: 100%;
+}
+.paraf-blue{
+    color: #051431;
+}
+.blue-tagline{
+    color: #05338D;
+}
+.blue-bg
+{
+    background-color: #05338D;
 }

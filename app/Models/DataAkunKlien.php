@@ -9,6 +9,7 @@ class DataAkunKlien extends DB_HANDLER
     protected $database = [
         "tabel" => '`akun_klien`',
         "login"  => '`id_klien` ,`nama` ,`user` ,`pass` ,`email` ,`noHP`',
+        "pass"  => '`id_klien`, `pass`'
     ];
 
     public function createDataAkun($data, $kolom) {
@@ -30,6 +31,31 @@ class DataAkunKlien extends DB_HANDLER
         $database = $this -> database;
         $where = "user = '".$user."'";
         $query = $this->DB_READ($database['tabel'],$database['login'],$where);
+        return $query;
+    }
+
+    public function getPassword($id){
+        
+        $database = $this -> database;
+        $where = "id_klien ='".$id."'";
+        $query = $this->DB_READ($database['tabel'],$database['pass'],$where);
+        return $query;
+    }
+
+    public function updatePassword($id,$pass){
+        
+        $database = $this -> database;
+        $kolom = "`pass`='".$pass."'";
+        $where = "id_klien ='".$id."'";
+        try{
+
+            $query = DataAkunKlien::DB_UPDATE($database['tabel'],$kolom,$where);
+            $hasil = true;
+
+        } catch(QueryException $e) {
+            $query = $e -> getMessage();
+            $hasil = false;
+        }
         return $query;
     }
 

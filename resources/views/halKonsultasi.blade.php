@@ -11,26 +11,26 @@ $query = session('userSession');
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-11">
-            <div class="mt-4">
+            <div class="mt-5">
                 <div class="">
-
                     <div class="card">
                         <div class="m-3">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-between align-items-center">
                                 <div class="col-3">
                                     <b> LIST KONSULTAN </b>
                                 </div>
                                 <div class="col">
-                                    <form class="d-flex" role="search" action="" method="post">
+                                    <form class="d-flex" role="search" action="<?= route('home.konsultasi.cari') ?>" method="post">
                                         @csrf
                                         <div class="form-grup m-2 flex-fill">
                                             <select name="ikan" class="form-select" aria-label="Default select example">
                                                 <option value="0" selected>Pilih Jenis Ikan</option>
-                                                <option value="lele">Lele</option>
+                                                <option value="1">Lele</option>
+                                                <option value="2">Nila</option>
                                             </select>
                                         </div>
                                         <div class="form-grup m-2 flex-fill">
-                                            <input class="form-control me-2" type="search" placeholder="Cari" name="cari" required>
+                                            <input class="form-control me-2" type="search" placeholder="Cari Konsultan" name="nama">
                                         </div>
                                         <div class="m-2 flex-fill">
                                             <button class="btn btn-success" type="submit">Search</button>
@@ -74,8 +74,10 @@ $query = session('userSession');
                     <div class=" m-3">
                         @foreach ($data as $konsultan)
                         <div onclick="window.location.href = '<?= route('home.konsultan.detail') . '?no=' . $konsultan->id_konsultan ?>' ">
-                            <div class="konsultan-item row border rounded my-3 p-2 bg-white">
-                                <div class="col-2 border rounded align-self-center " style="width: 150px; height:150px;"></div>
+                            <div class="konsultan-item row border rounded my-3 p-3 bg-white">
+                                <div class="col-2 align-self-center me-3" style="width: 150px; height:150px;">
+                                    <img class="rounded" src="data:image/png;base64,<?= $konsultan->foto_profil ?>" alt="" width="150px" height="150px">
+                                </div>
                                 <div class="col-8 align-self-center ">
                                     <p class="fs-5 "> {{ $konsultan->nama }} </p>
                                     <div class="d-flex flex-column ">
@@ -91,7 +93,7 @@ $query = session('userSession');
                                                 </tr>
                                                 <tr>
                                                     <td><b class="flex-fill">Deskripsi</b></td>
-                                                    <td>: {{ $konsultan->deskripsi }}</td>
+                                                    <td>: <small> {{ $konsultan->deskripsi }}</small></td>
                                                 </tr>
                                             </table>
                                         </div>

@@ -56,8 +56,11 @@ Route::get('homepage/profil', [ProfilKlien::class, 'profilKlien']) -> name('home
 Route::get('homepage/profil/update', [ProfilKlien::class, 'setPerubahanFormAkun']) -> name('profil.form');
 Route::post('homepage/profil/update', [ProfilKlien::class, 'simpan']) -> name('profil.save');
 Route::get('homepage/logout', [ProfilKlien::class, 'logout']) -> name('home.logout');
+Route::get('homepage/profil/password', [ProfilKlien::class, 'setUbahFormPassword']) -> name('home.password');
+Route::post('homepage/profil/password', [ProfilKlien::class, 'ubahPassword']) -> name('home.password.ubah');
 //fixed
 Route::get('homepage/konsultasi',[HalKonsultasi::class,'setHalKonsultasi']) -> name('home.konsultasi');
+Route::post('homepage/konsultasi/cari',[HalKonsultasi::class,'setCari']) -> name('home.konsultasi.cari');
 Route::get('homepage/konsultasi/detail',[DetailKonsultasi::class,'detailKonsultan']) -> name('home.konsultan.detail');
 //fixed
 Route::get('homepage/konsultasi/pembayaran',[HalPembayaran::class,'setHalPembayaran']) -> name('home.pembayaran');
@@ -67,6 +70,10 @@ Route::get('homepage/pakan',[PanduanPakan::class,'panduanPakan']) -> name('home.
 Route::post('homepage/pakan',[PanduanPakan::class,'sendDataIkan']) -> name('home.pakan.panduan');
 //fixed
 Route::get('homepage/panen',[EvaluasiPanen::class,'evaluasiPanen']) -> name('home.panen');
+Route::get('homepage/panen/tambah',[EvaluasiPanen::class,'tambahEvaluasiPanen']) -> name('home.panen.tambah');
+Route::get('homepage/panen/edit',[EvaluasiPanen::class,'editEvaluasiPanen']) -> name('home.panen.edit');
+Route::post('homepage/panen/edit',[EvaluasiPanen::class,'updateEvaluasiPanen']) -> name('home.panen.update');
+Route::get('homepage/panen/detail',[EvaluasiPanen::class,'detailEvaluasiPanen']) -> name('home.panen.detail');
 Route::post('homepage/panen',[EvaluasiPanen::class,'hitungEP']) -> name('home.ep');
 //fixed
 Route::get('homepage/riwayat',[Riwayat::class,'setRiwayat']) -> name('home.riwayat');
@@ -75,6 +82,8 @@ Route::get('homepage/riwayat/detail',[Riwayat::class,'setRiwayatDetail']) -> nam
 Route::post('homepage/chat/client',[SesiChatKlien::class, 'klienChat']) -> name('homepage.chat');
 Route::post('homepage/chat/client/push', [SesiChatKlien::class, 'pushKlien']) -> name('homepage.chat.push');
 Route::post('homepage/chat/client/poll', [SesiChatKlien::class, 'poll']) -> name('homepage.chat.poll');
+//fixed
+Route::any('homepage/konsultan/payment/full', [HalPembayaran::class, 'midtransPay']) -> name('home.payment');
 
 //Fixed
 Route::get('/consultant',[LoginKonsultan::class, 'setFormLoginKonsultan']) -> name('con.login');
@@ -86,6 +95,8 @@ Route::get('dashboard/profil',[ProfilKonsultan::class, 'profilKonsultan']) -> na
 Route::get('dashboard/logout',[ProfilKonsultan::class, 'logout']) -> name('dashboard.logout');
 Route::get('dashboard/profil/update',[ProfilKonsultan::class, 'setPerubahanFormAkun']) -> name('dashboard.profil.form');
 Route::post('dashboard/profil/update',[ProfilKonsultan::class, 'sendDataAkun']) -> name('dashboard.profil.update');
+Route::get('dashboard/profil/password',[ProfilKonsultan::class, 'setUbahFormPassword']) -> name('dashboard.password');
+Route::post('dashboard/profil/password/update',[ProfilKonsultan::class, 'ubahPassword']) -> name('dashboard.password.update');
 //fixed
 Route::get('dashboard/klien',[C_Klien::class,'klien']) -> name('dashboard.klien');
 Route::get('dashboard/klien/detail',[KlienDetail::class,'detailKlien']) -> name('dashboard.klien.detail');
@@ -94,6 +105,7 @@ Route::get('dashboard/klien/chat',[C_Chat::class, 'setDataChat']) -> name('dashb
 Route::post('dashboard/klien/chat/sesi',[SesiChatKonsultan::class, 'konsultanChat']) -> name('dashboard.chat.sesi');
 Route::post('dashboard/klien/chat/push',[SesiChatKonsultan::class, 'pushKonsultan']) -> name('dashboard.chat.push');
 Route::post('dashboard/klien/chat/poll',[SesiChatKonsultan::class, 'poll']) -> name('dashboard.chat.poll');
+Route::get('dashboard/klien/chat/stop',[SesiChatKonsultan::class, 'endChat']) -> name('dashboard.chat.end');
 
 // Route::post('homepage/profil/update/password', [Profil::class, 'profilUpdatePassword']) -> name('profil.pass');
 
@@ -109,7 +121,7 @@ Route::post('dashboard/klien/chat/poll',[SesiChatKonsultan::class, 'poll']) -> n
 // Route::post('homepage/konsultan/detail', [Konsultasi::class, 'detailKonsultan']) -> name('home.konsultan.detail');
 // Route::post('homepage/konsultan/pemesanan', [Konsultasi::class, 'setkonsultan']) -> name('home.pesanan');
 // Route::post('homepage/konsultan/token', [Konsultasi::class, 'getToken']) -> name('home.token');
-Route::any('homepage/konsultan/payment/full', [HalPembayaran::class, 'midtransPay']) -> name('home.payment');
+
 // Route::get('homepage/konsultan/sesi', [Sesi::class, 'setSesi']) -> name('home.sesi');
 
 

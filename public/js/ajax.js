@@ -76,7 +76,7 @@ class PollingChat {
     
             success: function(response) {
                 if(response != 0){
-                    self.pollData(urlPoll);
+                    // self.pollData(urlPoll);
                 }
                 else{
                     $("#pesan").val("Chat Telah Berakhir"); 

@@ -3,30 +3,22 @@ $query = session('consultantSession');
 ?>
 @extends('layouts.appKonsultan')
 
-@section('sidebar')
-@include('parts.sidebarKonsultan')
-@endsection
-
 @section('navbar')
 @include('parts.navbarKonsultan')
 @endsection
 
 @section('content')
-<div class="container bg-white">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-11">
             <div class="mt-3">
                 <div class="">
                     <div class="m-3">
-
-                        <div class="row justify-content-between">
-                            <div class="col align-self-center">
-                                <div class="">
-                                    <strong class="fs-5 fw-bold">SESI CHAT</strong>
-                                </div>
-                            </div>
+                        <br>
+                        <div class="card">
+                            <b class=" fw-bolder m-3">DAFTAR CHAT</b>
                         </div>
-                        <hr>
+                        <br>
                         @if(isset($sesi) && count($sesi))
 
                         @foreach ($sesi as $baris)
@@ -34,7 +26,7 @@ $query = session('consultantSession');
                             <div class="m-3">
                                 <div class="d-flex flex-row">
                                     <div class="flex-fill m-auto">
-                                        <b>SESI CHAT</b>
+                                        <b>Sesi Chat</b>
                                     </div>
                                     <div class="flex-fill m-auto text-center">
                                         <small>Konsultan</small>

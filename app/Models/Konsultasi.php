@@ -41,6 +41,14 @@ class Konsultasi extends DB_HANDLER {
         return;
     }
 
+    public function updateStatusChat($id_pesanan){
+
+        $where = "id_pemesanan = '".$id_pesanan."'";
+        $kolom = "`status_transaksi` = 'finished'";
+        $this -> DB_UPDATE('konsultasi', $kolom,$where);
+        return;
+    }
+
     public function getKonsultasi($id){
         $config = $this -> database;
         $join = "JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien JOIN akun_konsultan ON konsultasi.konsultan_id = akun_konsultan.id_konsultan";

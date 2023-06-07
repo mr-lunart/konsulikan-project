@@ -8,7 +8,7 @@ class Ikan extends DB_HANDLER {
         "tabel" => "`ikan`",
         "data" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`klien_id`,`tanggal`",
         "data3" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
-        "data2" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`",
+        "data2" => "`id_ikan`,`jenis_ikan_id`,`umur_ikan`,`tanggal`, DATEDIFF(NOW(), tanggal) AS jarak_hari",
     ];
 
     public function getDataIkan($id){
@@ -27,7 +27,7 @@ class Ikan extends DB_HANDLER {
 
     public function updateDataIkan($post,$id){
         $config = $this -> database;
-        $input = "`jenis_ikan_id`='".$post['ikan']."',`umur_ikan`='".$post['umur']."'";
+        $input = "`jenis_ikan_id`='".$post['ikan']."',`umur_ikan`='".$post['umur']."', `tanggal`=NOW()";
         $where = "`klien_id` = '".$id."'";
         $data = $this -> DB_UPDATE( $config['tabel'],$input,$where);
         return $data;

@@ -30,11 +30,18 @@ $sesi = session('sesiChat');
     </div>
     <div id="chat" class="overflow-auto">
     </div>
-
 </div>
-<div class="input-group">
-    <input id="pesan" class="form-control rounded-0" placeholder="..." name="pesan">
-    <button id="chat-submit" class="btn btn-primary rounded-0" type="submit"> Send </button>
+
+<div class="input-group my-2">
+    <input class="form-control bg-transparent border-0 " placeholder="" name="pesan" disabled>
+</div>
+<div id="pesanBox" class="d-flex ">
+    <div class="flex-fill d-flex m-1">
+        <div class="input-group">
+            <input id="pesan" class="form-control flex-fill bg-white border-0 my-1" placeholder="" name="pesan">
+        </div>
+        <button id="chat-submit" class="btn btn-primary mx-2" type="submit"> >> </button>
+    </div>
 </div>
 
 @endsection

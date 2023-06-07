@@ -16,11 +16,10 @@
 </head>
 <body class="bg-light">
     <div class="d-flex flex-column">
-        <div class="bg-white">
+        <div class="navbar bg-white">
             @yield('navbar')
         </div>
         <div class="flex-fill">
-            
             @yield('content')
         </div>
     </div>
