@@ -74,29 +74,27 @@ $query = session('userSession');
                     <div class=" m-3">
                         @foreach ($data as $konsultan)
                         <div onclick="window.location.href = '<?= route('home.konsultan.detail') . '?no=' . $konsultan->id_konsultan ?>' ">
-                            <div class="konsultan-item row border rounded my-3 p-3 bg-white">
-                                <div class="col-2 align-self-center me-3" style="width: 150px; height:150px;">
+                            <div class="konsultan-item row border rounded my-2 p-3 bg-white">
+                                <div class="col-2" style="width: 160px; height:160px;">
                                     <img class="rounded" src="data:image/png;base64,<?= $konsultan->foto_profil ?>" alt="" width="150px" height="150px">
                                 </div>
-                                <div class="col-8 align-self-center ">
+                                <div class="col-8 align-self-center ms-2">
                                     <p class="fs-5 "> {{ $konsultan->nama }} </p>
-                                    <div class="d-flex flex-column ">
-                                        <div class="d-flex flex-row">
-                                            <table>
-                                                <tr>
-                                                    <td><b class="flex-fill">Jenis Ikan</b></td>
-                                                    <td>: <?= ucfirst($konsultan->jenis_ikan) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b class="flex-fill">Tarif</b></td>
-                                                    <td>: Rp.{{ $konsultan->tarif }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b class="flex-fill">Deskripsi</b></td>
-                                                    <td>: <small> {{ $konsultan->deskripsi }}</small></td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="d-flex my-1">
+                                            <span class="me-3">
+                                                <b>Jenis Ikan : </b>
+                                                <span><?= ucfirst($konsultan->jenis_ikan) ?></span>
+                                            </span>
+                                            <span class="ms-3">
+                                                <b>Tarif  : </b>
+                                                <span> Rp.{{ $konsultan->tarif }} </span>
+                                            </span>
+                                        </span>
+                                        <span class="my-1">
+                                            <b>Deskripsi</b><br>
+                                            <span><?= $konsultan->deskripsi?></span>
+                                        </span>
                                     </div>
                                 </div>
 

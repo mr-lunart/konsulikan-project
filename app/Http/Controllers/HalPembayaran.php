@@ -83,7 +83,7 @@ class HalPembayaran extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => $order_id,
-                'gross_amount' => $harga,
+                'gross_amount' => $harga+2000,
             ),
             'customer_details' => array(
                 'first_name' => $nama,

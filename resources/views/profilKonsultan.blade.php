@@ -20,8 +20,13 @@ $query = session('consultantSession');
         </div>
         <br>
         <div class="card ">
-            <div class="dflex m-3">
-
+            <div class="dflex flex-row m-3">
+                <div class="flex-fill d-flex justify-content-center">
+                    <div class="col-2 align-self-center me-3" style="width: 150px; height:150px;">
+                        <img class="rounded" src="data:image/png;base64,<?= $query[0]->foto_profil ?>" alt="" width="150px" height="150px">
+                    </div>
+                </div>
+                <hr>
                 <div class="d-flex flex-row">
                     <div class="d-flex flex-column">
                         <p><strong>Nama</strong></p>
@@ -64,32 +69,32 @@ $query = session('consultantSession');
 <script>
     var dialogContent = $("<div>").attr("title", "Logout").text("Apakah Anda yakin ingin keluar?");
 
-function logoutConfirm() {
-    dialogContent.dialog({
-        resizable: false,
-        height: "auto",
-        width: 400,
-        modal: true,
-        dialogClass: "no-close",
-        buttons: {
-            "Ya": {
-                class: "btn btn-danger",
-                text: "Ya",
-                click: function() {
-                    $(this).dialog("close");
-                    window.location.replace('<?= route('dashboard.logout') ?>');
-                }
-            },
-            "Tidak": {
-                class: "btn btn-primary",
-                text: "Tidak",
-                click: function() {
-                    $(this).dialog("close");
+    function logoutConfirm() {
+        dialogContent.dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            dialogClass: "no-close",
+            buttons: {
+                "Ya": {
+                    class: "btn btn-danger",
+                    text: "Ya",
+                    click: function() {
+                        $(this).dialog("close");
+                        window.location.replace('<?= route('dashboard.logout') ?>');
+                    }
+                },
+                "Tidak": {
+                    class: "btn btn-primary",
+                    text: "Tidak",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
                 }
             }
-        }
-    });
-}
+        });
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>

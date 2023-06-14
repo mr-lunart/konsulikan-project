@@ -22,22 +22,20 @@ $query = session('userSession');
                     <hr>
                     <div class="d-flex flex-row">
                         <div class="d-flex flex-column">
-                            <p><strong>Nama</strong></p>
-                            <p><strong>Jenis Ikan</strong></p>
-                            <p><strong>Tarif Konsultasi</strong></p>
-                            <p><strong>Deskripsi</strong></p>
-                        </div>
-                        <div class=" px-2">
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
+                            <small><strong>Nama</strong></small>
+                            <p><?=($konsultan[0] -> nama)?></p>
+                            <small><strong>Jenis Ikan</strong></small>
+                            <p><?=( ucfirst($konsultan[0] -> jenis_ikan) )?></p>
+                            <small><strong>Tarif Konsultasi</strong></small>
+                            <p><?= 'IDR '.number_format(floatval($konsultan[0] -> tarif),0,'.','.')?></p>
+                            <small><strong>Deskripsi</strong></small>
+                            <p><?=($konsultan[0] -> deskripsi)?></p>
                         </div>
                         <div class="d-flex flex-column">
-                            <p><?=($konsultan[0] -> nama)?></p>
-                            <p><?=( ucfirst($konsultan[0] -> jenis_ikan) )?></p>
-                            <p><?= 'IDR '.number_format(floatval($konsultan[0] -> tarif),0,'.','.')?></p>
-                            <p><?=($konsultan[0] -> deskripsi)?></p>
+                            
+                            
+                           
+                           
                         </div>
                     </div>
                     <hr>

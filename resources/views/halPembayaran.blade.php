@@ -36,10 +36,10 @@ $urlToken = session() -> get('urlToken');
                         <div class="d-flex flex-column mx-5 text-start">
                             <small><b>NAMA KLIEN</b></small>
                             <small><p><?=$transaksi['nama_klien']?></p></small>
-                            <small><b>METODE PEMBAYARAN</b></small>
-                            <small><p> BRI-ePAY (BRIMo) </p></small>
+                            <small><b>BIAYA KONSULTASI</b></small>
+                            <small><p> IDR.2000 </p></small>
                             <small><b>TOTAL TAGIHAN</b></small>
-                            <small><p> <?= 'IDR '.number_format(floatval($transaksi['tarif']),0,'.','.')?> </p></small>
+                            <small><p> <?= 'IDR '.number_format(floatval($transaksi['tarif']+2000),0,'.','.')?> </p></small>
                         </div>
                     </div>
                 @endif

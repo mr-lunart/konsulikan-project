@@ -1,4 +1,10 @@
 <?php
+$status = session()->get('status');
+if (isset($status)) {
+    if ($status) {
+        echo ("<script> alert(' Berhasil Update ') </script>");
+    }
+}
 
 $query = session('userSession');
 

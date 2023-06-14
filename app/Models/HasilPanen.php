@@ -37,7 +37,7 @@ class HasilPanen extends DB_HANDLER {
 
     public function updateDataHasilPanen($post){
         $config = $this -> database;
-        $where = "`klien_id`='".$post["id_hasilPanen"]."'";
+        $where = "`id_hasilPanen`='".$post["id_hasilPanen"]."'";
         $kolom = "`nama_kegiatan`='".$post["namaKolam"]."',`jenis_ikan_id`='".$post['ikan']."',`tanggal_tebar`='".$post['tglTebar']."',`tanggal_panen`='".$post['tglPanen']."',`bobot_total_pakan`='".$post['brtPakan']."',`bobot_ikan_awal`='".$post["brtAwal"]."',`bobot_ikan_panen`='".$post['brtPanen']."',`bobot_ikan_mati`='".$post['brtMati']."'";
         $data = $this -> DB_UPDATE( $config['tabel'],$kolom,$where);
         return $data;

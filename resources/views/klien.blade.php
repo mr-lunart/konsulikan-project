@@ -23,12 +23,13 @@ foreach ($riwayat as $jmlUang) {
             <b class="fw-bolder m-3">PENDAPATAN</b>
         </div>
         <br>
-        <div class="row justify-content-between">
+        <div class="row">
             @if (isset($pendapatan) && count($pendapatan) > 0)
-            <div class="col-4 card blue-bg text-white">
+            <div class="col-4 card blue-bg text-white me-3">
                 <b class="fw-bolder mx-3 mt-3 fs-4">Pendapatan Bulan Ini</b>
                 <span class="mx-3 mb-3 fs-5">IDR.{{$total}}</span>
             </div>
+            
             <div class="col-4 card blue-bg text-white">
                 <b class="fw-bolder mx-3 mt-3 fs-4">Total Pendapatan</b>
                 <span class="mx-3 mb-3 fs-5">IDR.{{$jmlTotal}}</span>

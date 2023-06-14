@@ -23,7 +23,7 @@ $sesi = session('sesiChat');
                     <br>
                     <small><?= $sesi[0]->nama_klien ?></small>
                 </div>
-                <a class="btn btn-danger" href="<?=route('dashboard.chat.end')?>">End Chat</a>
+                <button onclick="logoutConfirm()" class="btn btn-danger"> End Chat </button>
             </div>
         </div>
     </div>
@@ -59,5 +59,35 @@ $sesi = session('sesiChat');
             chat.pushData(push, poll)
         }
     );
+</script>
+<script>
+     var dialogContent = $("<div>").attr("title", "End Chat").text("Apakah Anda yakin ingin mengakhiri Chat?");
+
+    function logoutConfirm() {
+        dialogContent.dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            dialogClass: "no-close",
+            buttons: {
+                "Ya": {
+                    class: "btn btn-danger",
+                    text: "Ya",
+                    click: function() {
+                        $(this).dialog("close");
+                        window.location.replace('<?= route('dashboard.chat.end') ?>');
+                    }
+                },
+                "Tidak": {
+                    class: "btn btn-primary",
+                    text: "Tidak",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            }
+        });
+    }
 </script>
 @endsection

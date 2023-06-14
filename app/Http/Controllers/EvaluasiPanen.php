@@ -1,22 +1,24 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\HasilPanen;
 
 class EvaluasiPanen extends Controller
 {
-    
-    public function evaluasiPanen() {
+
+    public function evaluasiPanen()
+    {
         $id = session('userSession')[0]->id_klien;
         $hasilPanen = new HasilPanen();
         $data = $hasilPanen->getDataHasilPanen($id);
         $kolom = $hasilPanen->getKolom($id);
         $ep = [];
-        foreach ($data as $row){
+        foreach ($data as $row) {
             $percent = $this->RumusEP($row);
-            array_push($ep,$percent);
+            array_push($ep, $percent);
         }
-        return view('evaluasiPanen',['ep'=>$ep,'display'=>$kolom]);
+        return view('evaluasiPanen', ['ep' => $ep, 'display' => $kolom]);
     }
 
     public function RumusEP($row)
@@ -27,39 +29,42 @@ class EvaluasiPanen extends Controller
         return round($bawah * 100);
     }
 
-    public function detailEvaluasiPanen() {
+    public function detailEvaluasiPanen()
+    {
         $id = $_GET['id_hasilPanen'];
         $hasilPanen = new HasilPanen();
         $data = $hasilPanen->getHasilPanen($id);
-        return view('detailEvaluasiPanen',['data' => $data[0]]);
+        return view('detailEvaluasiPanen', ['data' => $data[0]]);
     }
 
-    public function tambahEvaluasiPanen() {
+    public function tambahEvaluasiPanen()
+    {
         return view('tambahEvaluasiPanen');
     }
 
-    public function editEvaluasiPanen() {
+    public function editEvaluasiPanen()
+    {
         $id = $_GET['id_hasilPanen'];
         $hasilPanen = new HasilPanen();
         $data = $hasilPanen->getHasilPanen($id);
-        return view('editEvaluasiPanen',['data' => $data[0]]);
+        return view('editEvaluasiPanen', ['data' => $data[0]]);
     }
 
-    public function updateEvaluasiPanen() {
+    public function updateEvaluasiPanen()
+    {
         $post = $_POST;
         $hasilPanen = new HasilPanen();
         $data = $hasilPanen->updateDataHasilPanen($post);
-        echo($data);
-        // return redirect() -> route('home.panen.edit') -> with( ['status' => true] );  
+        return redirect()->route('home.panen')->with(['status' => true]);
     }
 
-    public function hitungEP() {
+    public function hitungEP()
+    {
         $post = $_POST;
         $id = session('userSession')[0]->id_klien;
         $hasilPanen = new HasilPanen();
-        $data = $hasilPanen->sendDataHasilPanen($post,$id);
+        $data = $hasilPanen->sendDataHasilPanen($post, $id);
 
-        return redirect() -> route('home.panen');
+        return redirect()->route('home.panen');
     }
 }
-?>
