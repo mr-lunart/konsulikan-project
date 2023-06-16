@@ -30,16 +30,19 @@ $query = session('userSession');
                                 <strong>Nama Kolam</strong>
                                 <input class="form-control" type="text" name="namaKolam" value="" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
                                 <strong>Tanggal Tebar</strong>
                                 <input class="form-control" type="date" name="tglTebar" value="" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Total Berat Pakan</strong>
+                                <strong>Total Berat Pakan / Kg</strong>
                                 <input class="form-control" type="text" name="brtPakan" value="" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Ikan Panen</strong>
+                                <strong>Berat Ikan Panen / Kg</strong>
                                 <input class="form-control" type="text" name="brtPanen" value="" required>
                             </div>
                         </div>
@@ -51,16 +54,19 @@ $query = session('userSession');
                                     <option value="2">Nila</option>
                                 </select>
                             </div>
+                            <p></p>
                             <div class="form-grup">
                                 <strong>Tanggal Panen</strong>
                                 <input class="form-control" type="date" name="tglPanen" value="" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Awal Ikan</strong>
+                                <strong>Berat Awal Ikan / Kg</strong>
                                 <input class="form-control" type="text" name="brtAwal" value="" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Ikan Mati</strong>
+                                <strong>Berat Ikan Mati / Kg</strong>
                                 <input class="form-control" type="text" name="brtMati" value="" required>
                             </div>
                         </div>
@@ -76,6 +82,8 @@ $query = session('userSession');
         </div>
     </div>
 </div>
+<br>
+<br>
 @endsection
 
 @section('footer')

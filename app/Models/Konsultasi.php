@@ -49,6 +49,13 @@ class Konsultasi extends DB_HANDLER {
         return;
     }
 
+    public function getKonsultasiKonsultanId($id){
+        $config = $this -> database;
+        $where = "id_pemesanan = '".$id."';";
+        $data = $this -> DB_READ_WHERE($config['tabel'],"`konsultan_id`",$where);
+        return $data;
+    }
+
     public function getKonsultasi($id){
         $config = $this -> database;
         $join = "JOIN akun_klien ON konsultasi.klien_id = akun_klien.id_klien JOIN akun_konsultan ON konsultasi.konsultan_id = akun_konsultan.id_konsultan";

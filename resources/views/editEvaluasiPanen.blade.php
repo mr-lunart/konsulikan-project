@@ -27,16 +27,19 @@ $query = session('userSession');
                                 <strong>Nama Kolam</strong>
                                 <input class="form-control" type="text" name="namaKolam" value="<?= $data->nama_kegiatan ?>" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
                                 <strong>Tanggal Tebar</strong>
                                 <input class="form-control" type="date" name="tglTebar" value="<?= $data->tanggal_tebar ?>" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Total Berat Pakan</strong>
+                                <strong>Total Berat Pakan / Kg</strong>
                                 <input class="form-control" type="text" name="brtPakan" value="<?= $data->bobot_total_pakan ?>" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Ikan Panen</strong>
+                                <strong>Berat Ikan Panen / Kg</strong>
                                 <input class="form-control" type="text" name="brtPanen" value="<?= $data->bobot_ikan_panen ?>" required>
                             </div>
                         </div>
@@ -48,16 +51,19 @@ $query = session('userSession');
                                     <option value="2" <?php if($data->jenis_ikan_id==2){print("selected");}?>>Nila</option>
                                 </select>
                             </div>
+                            <p></p>
                             <div class="form-grup">
                                 <strong>Tanggal Panen</strong>
                                 <input class="form-control" type="date" name="tglPanen" value="<?= $data->tanggal_panen ?>" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Awal Ikan</strong>
+                                <strong>Berat Awal Ikan / Kg</strong>
                                 <input class="form-control" type="text" name="brtAwal" value="<?= $data->bobot_ikan_awal?>" required>
                             </div>
+                            <p></p>
                             <div class="form-grup">
-                                <strong>Berat Ikan Mati</strong>
+                                <strong>Berat Ikan Mati / Kg</strong>
                                 <input class="form-control" type="text" name="brtMati" value="<?= $data->bobot_ikan_mati ?>" required>
                             </div>
                         </div>
@@ -76,6 +82,9 @@ $query = session('userSession');
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
 @endsection
 
 @section('footer')

@@ -105,7 +105,7 @@ function RumusEP($row)
                     <div class="form-grup">
                         <strong>Efisiensi Pakan</strong>
                         <div class="form-control d-flex justify-content-between">
-                            <input class="border-0 bg-white type="text" name="brtMati" value="<?= RumusEP($data) ?>" disabled>
+                            <input class="border-0 bg-white" type="text" name="brtMati" value="<?= RumusEP($data) ?>" disabled>
                             <small><b>%</b></small>
                         </div>
                     </div>

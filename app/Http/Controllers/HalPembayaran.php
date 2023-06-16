@@ -49,6 +49,13 @@ class HalPembayaran extends Controller
         return $query;
     }
 
+    public static function getPembayaran($id_pesanan)
+    {
+        $konsultasi = new Konsultasi;
+        $query = $konsultasi->getKonsultasiKonsultanId($id_pesanan);
+        return $query;
+    }
+
     public function midtransPay()
     {
 
@@ -57,13 +64,13 @@ class HalPembayaran extends Controller
         $payment = session('payment');
 
         if ($status == "settlement") {
-            echo ("Transaksi Berhasi!! : ");
-            print("Silahkan Menutup Window Ini dan Kembali ke Website Utama");
-            $updateKonsultan =  $this->updateStatusKonsultan($payment['id_konsultan']);
-            $updatepesanan = $this->updateStatusPembayaran($order);
+            $this->updateStatusPembayaran($order);
+            // $updateKonsultan =  $this->updateStatusKonsultan($payment['id_konsultan']);
+            $idKonsultan = $this->getPembayaran($order);
+            $updateKonsultan =  $this->updateStatusKonsultan($idKonsultan[0]->konsultan_id);
+            return view('apiPage',['status'=>'sukses']);
         } elseif ($status == "deny") {
-            echo ("Maaf Transaksi Gagal : ");
-            echo ("Hubungi Admin Website atau Lakukan Pemesanan Ulang");
+            return view('apiPage',['status'=>'gagal']);
         } else {
             echo ("Silahkan Menutup Window Ini dan Kembali ke Website Utama");
         }
@@ -83,7 +90,7 @@ class HalPembayaran extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => $order_id,
-                'gross_amount' => $harga+2000,
+                'gross_amount' => $harga + 2000,
             ),
             'customer_details' => array(
                 'first_name' => $nama,

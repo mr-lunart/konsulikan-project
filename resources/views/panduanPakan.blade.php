@@ -73,7 +73,7 @@ if (isset($panduan) && count($panduan) > 0) {
                             </select>
                         </div>
                         <div class="form-grup col-6">
-                            <strong>Umur Ikan</strong>
+                            <strong>Umur Ikan / Hari</strong>
                             <input class="form-control" type="text" name="umur" value="<?= dataIkan('umur_ikan', $dataIkan) ?>" required>
                         </div>
                     </div>

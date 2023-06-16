@@ -2,7 +2,7 @@
 $query = session('userSession');
 $sesi = session('sesiChat');
 ?>
-@extends('layouts.app')
+@extends('layouts.klienChat')
 
 @section('sidebar')
 @include('parts.sidebarKlien')
